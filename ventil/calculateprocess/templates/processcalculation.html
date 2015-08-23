@@ -3,12 +3,12 @@
 {% load staticfiles %}
     <head>
         <script type="text/javascript" src="{% static "jquery.js" %}"></script>
-
+         <style type="text/css">
+            #flot-placeholder{width:600px;height:800px;}        
+        </style>
         <meta charset="utf-8">
         <link href="{% static "css/bootstrap.css" %}" rel="stylesheet">
-        <style type="text/css">
-        #flot-placeholder{width:600px;height:800px;}        
-        </style>
+        <script type="text/javascript" src="{% static "creatid.js" %}"></script>
         <script type="text/javascript" src="{% static "flotjs/jquery.flot.js" %}"></script>
         <title>Расчет по процессам</title> 
     </head>
@@ -50,6 +50,7 @@
 
             <button type="button" class="btn btn-primary" onclick="delRow()" id="delrowbutton">Удалить точку</button>
             <button type="button" class="btn btn-primary" name="calculate" id="calculate">Произвести расчет</button>
+
         </div>
         <div class="col-md-8">
             <h1>Результат</h1>
@@ -70,8 +71,12 @@
             </table>
         </div>             
     </div>
+    <div class="col-md-8">
+        <button type="button" class="btn btn-primary" name="creatid" id="creatid">Построить диаграмму</button>
+        <div id="flot-placeholder"></div>
+    </div>
 <script  src="{% static "script.js" %}"></script>
 </div>
-<div id="flot-placeholder"></div>
+
 </body>
 </html>

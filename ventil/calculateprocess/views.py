@@ -7,6 +7,9 @@ from calculation import ProcessCalculation
 from django.http import JsonResponse
 import json 
 
+
+
+
 def calculate(request):
     i=1
     listvalue=[]
@@ -83,6 +86,7 @@ def calculate(request):
             'enthalpy_0'+str(i): parameters.enthalpy,
             'humiditycontent_0'+str(i): parameters.humiditycontent,
             'relativities_0'+str(i): parameters.relativities,
+            'processes_0'+str(i): processes,
         }
 
 

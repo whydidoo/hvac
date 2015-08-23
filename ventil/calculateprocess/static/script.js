@@ -9,7 +9,7 @@ delRowButton.disabled=true;
 //отправка данных для расчета
 $(document).ready(function() {
   
-
+    
   $('#calculate').on('click', function() {
     $.ajax({
       url: '/loadingdiagram/calculate/',
@@ -19,8 +19,9 @@ $(document).ready(function() {
       success: function(response) {
         var i = 1
         console.log(response);
+        var myResults = response;
         while(i<=document.getElementById('resultair').getElementsByTagName('tr').length){
-            var myResults = response;
+            
             var rowResult = document.getElementById('resultair').getElementsByTagName('tr')[i-1];
             var j = 1;
             while(j<=4) {
