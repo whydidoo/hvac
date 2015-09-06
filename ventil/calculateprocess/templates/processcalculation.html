@@ -8,7 +8,6 @@
         </style>
         <meta charset="utf-8">
         <link href="{% static "css/bootstrap.css" %}" rel="stylesheet">
-        <script type="text/javascript" src="{% static "creatid.js" %}"></script>
         <script type="text/javascript" src="{% static "flotjs/jquery.flot.js" %}"></script>
         <title>Расчет по процессам</title> 
     </head>
@@ -30,12 +29,14 @@
                     <thead>
                         <tr>
                             <th><p align="center">№</p></th>
+                            <th><p align="center">Выбор действия</p></th>
+                            <th><p align="center">Вид действия</p></th>
                             <th><p align="center">Температура</p></th>
                             <th><p align="center">Энтальпия</p></th>
                             <th><p align="center">Влагосодержание</p></th>
                             <th><p align="center">Отн. влажность</p></th>
-                            <th><p align="center">Процесс</p></th>
-                            <th><p align="center" colspan="3">Дополнительные параметры для процесса.</p></th>
+                            <th><p align="center" colspan="3">Дополнительные параметры для процесса</p></th>
+                            <th><p align="center" colspan="3">Конечный параметр для построения процесса</p></th>
                             <th><p align="center">Начало расчета процесса.</p></th>
                         </tr>
                     </thead>      
@@ -72,7 +73,6 @@
         </div>             
     </div>
     <div class="col-md-8">
-        <button type="button" class="btn btn-primary" name="creatid" id="creatid">Построить диаграмму</button>
         <div id="flot-placeholder"></div>
     </div>
 <script  src="{% static "script.js" %}"></script>

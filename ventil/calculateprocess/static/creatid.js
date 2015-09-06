@@ -9,13 +9,9 @@ $(document).ready(function() {
       data: $('#formvalue').serialize(),
       success: function(response) {
         
-        var i = 1;
         var myResults = response;
 
 
-        while(i<=document.getElementById('resultair').getElementsByTagName('tr').length){
-            i++;
-        }
 
 
 
@@ -31,11 +27,10 @@ $(document).ready(function() {
 
 
         var temperature=[-41,-40,-39,-38,-37,-36,-35,-34,-33,-32,-31,-30,-29,-28,-27,-26,-25,
-    -24,-23,-22,-21,-20,-19,-18,-17,-16,-15,-14,-13,-12,-11,-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,0,
+        -24,-23,-22,-21,-20,-19,-18,-17,-16,-15,-14,-13,-12,-11,-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,0,
         1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,
         25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41];
         var barometricpressure=document.getElementById('barometricpressure').value;
-        var j=0;
         
         function humid(temperature,barometricpressure,relativities){
             var saturationpressure
@@ -58,11 +53,11 @@ $(document).ready(function() {
             humiditycontent.toFixed(2)
             return humiditycontent;
         }
+        var placeholder = $("#flot-placeholder");
 
 
 
-
-        var i=0;
+        var number=0;
         var HumidAndTemprValue=[];
      
         var value=[]
@@ -75,18 +70,18 @@ $(document).ready(function() {
         var value8=[]
         var value9=[]
         var value10=[]
-        while (i<80) {
-                value.push([humid(temperature[i],barometricpressure,10),temperature[i]]);
-                value2.push([humid(temperature[i],barometricpressure,20),temperature[i]]);
-                value3.push([humid(temperature[i],barometricpressure,30),temperature[i]]);
-                value4.push([humid(temperature[i],barometricpressure,40),temperature[i]]);
-                value5.push([humid(temperature[i],barometricpressure,50),temperature[i]]);
-                value6.push([humid(temperature[i],barometricpressure,60),temperature[i]]);
-                value7.push([humid(temperature[i],barometricpressure,70),temperature[i]]);
-                value8.push([humid(temperature[i],barometricpressure,80),temperature[i]]);
-                value9.push([humid(temperature[i],barometricpressure,90),temperature[i]]);
-                value10.push([humid(temperature[i],barometricpressure,100),temperature[i]]);
-                i++;
+        while (number<80) {
+                value.push([humid(temperature[number],barometricpressure,10),temperature[number]]);
+                value2.push([humid(temperature[number],barometricpressure,20),temperature[number]]);
+                value3.push([humid(temperature[number],barometricpressure,30),temperature[number]]);
+                value4.push([humid(temperature[number],barometricpressure,40),temperature[number]]);
+                value5.push([humid(temperature[number],barometricpressure,50),temperature[number]]);
+                value6.push([humid(temperature[number],barometricpressure,60),temperature[number]]);
+                value7.push([humid(temperature[number],barometricpressure,70),temperature[number]]);
+                value8.push([humid(temperature[number],barometricpressure,80),temperature[number]]);
+                value9.push([humid(temperature[number],barometricpressure,90),temperature[number]]);
+                value10.push([humid(temperature[number],barometricpressure,100),temperature[number]]);
+                number++;
                 HumidAndTemprValue.push(value);
                 HumidAndTemprValue.push(value2);
                 HumidAndTemprValue.push(value3);
@@ -651,7 +646,7 @@ $(document).ready(function() {
 
         var key=1
         while(key<=document.getElementById('resultair').getElementsByTagName('tr').length){
-            if (myResults[key-1]['processes_0'+key]==0){
+            if (myResults[key-1]['selectionofaction_0'+key]==0){
                 var dotsValue={
                     legend:{show: true},
                     data: [[myResults[key-1]['humiditycontent_0'+numberconnect],myResults[key-1]['temperature_0'+numberconnect]],[myResults[key-1]['humiditycontent_0'+key],myResults[key-1]['temperature_0'+key]]],
@@ -660,6 +655,7 @@ $(document).ready(function() {
                     lines: { show: true },
                     
             } 
+
                 data.push(dotsValue);
             }else if (myResults[key-1]['processes_0'+key]==1){
                 var numberconnect=document.getElementById('selecttimenowproccess_0'+key).value
@@ -674,12 +670,25 @@ $(document).ready(function() {
 
                 data.push(dotsValue);
 
-            }else if (myResults[key-1]['processes_0'+key]==4){
+            }else if (myResults[key-1]['processes_0'+key]==3){
                 var numberconnect=document.getElementById('selecttimenowproccess_0'+key).value
                 var dotsValue={
                     legend:{show: true},
                     data: [[myResults[numberconnect-1]['humiditycontent_0'+numberconnect],myResults[numberconnect-1]['temperature_0'+numberconnect]],[myResults[key-1]['humiditycontent_0'+key],myResults[key-1]['temperature_0'+key]]],
                     color: "blue",
+                    points: { show: true },
+                    lines: { show: true },
+                
+            } 
+
+                data.push(dotsValue);
+
+            }else if (myResults[key-1]['processes_0'+key]==5){
+                var numberconnect=document.getElementById('selecttimenowproccess_0'+key).value
+                var dotsValue={
+                    legend:{show: true},
+                    data: [[myResults[numberconnect-1]['humiditycontent_0'+numberconnect],myResults[numberconnect-1]['temperature_0'+numberconnect]],[myResults[key-1]['humiditycontent_0'+key],myResults[key-1]['temperature_0'+key]]],
+                    color: '#FF02DF',
                     points: { show: true },
                     lines: { show: true },
                 
@@ -718,7 +727,7 @@ $(document).ready(function() {
                 var dotsValue={
                     legend:{show: true},
                     data: [[myResults[numberconnect-1]['humiditycontent_0'+numberconnect],myResults[numberconnect-1]['temperature_0'+numberconnect]],[myResults[key-1]['humiditycontent_0'+key],myResults[key-1]['temperature_0'+key]]],
-                    color: '#FF02DF',
+                    color: "red",
                     points: { show: true },
                     lines: { show: true },
                 
@@ -731,19 +740,6 @@ $(document).ready(function() {
                 var dotsValue={
                     legend:{show: true},
                     data: [[myResults[numberconnect-1]['humiditycontent_0'+numberconnect],myResults[numberconnect-1]['temperature_0'+numberconnect]],[myResults[key-1]['humiditycontent_0'+key],myResults[key-1]['temperature_0'+key]]],
-                    color: "red",
-                    points: { show: true },
-                    lines: { show: true },
-                
-            } 
-
-                data.push(dotsValue);
-
-            }else if (myResults[key-1]['processes_0'+key]==10){
-                var numberconnect=document.getElementById('selecttimenowproccess_0'+key).value
-                var dotsValue={
-                    legend:{show: true},
-                    data: [[myResults[numberconnect-1]['humiditycontent_0'+numberconnect],myResults[numberconnect-1]['temperature_0'+numberconnect]],[myResults[key-1]['humiditycontent_0'+key],myResults[key-1]['temperature_0'+key]]],
                     color: 'blue',
                     points: { show: true },
                     lines: { show: true },
@@ -752,7 +748,7 @@ $(document).ready(function() {
 
                 data.push(dotsValue);
 
-            }else if (myResults[key-1]['processes_0'+key]==11){
+            }else if (myResults[key-1]['processes_0'+key]==10){
                 var numberconnect=document.getElementById('selecttimenowproccess_0'+key).value
                 var dotsValue={
                     legend:{show: true},
@@ -799,7 +795,6 @@ $(document).ready(function() {
 
 
         var placeholder = $("#flot-placeholder");
-
         var plot=$.plot($("#flot-placeholder"), data ,options);
 
         var o = plot.pointOffset({ x: 0.6, y: -21.1});
@@ -850,4 +845,4 @@ $(document).ready(function() {
     });
     return false;
   });
-}); 
+});

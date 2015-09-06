@@ -8,6 +8,6 @@ urlpatterns = [
 
     url(r'^loadingdiagram/processcalculation/$',views.process_calculation,name='processcalculation'),
     url(r'^loadingdiagram/calculate/$',views.calculate),
-    url(r'^',views.process_calculation),
+    url(r'^/$',views.process_calculation),
     
 ]

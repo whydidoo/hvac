@@ -177,7 +177,6 @@ class ProcessCalculation:
             self.saturationpressure=float(round(exp((16.57 * self.temperature - 115.72) /
             (233.77 + 0.997 * self.temperature)),5)) 
         self.relativities=round(self.parcpressure/self.saturationpressure*100,5)#Отностилеьная влажность
-
     def find_valueair_with_process_rayprocess_with_humiditycontent(self,humiditycontent,previous_enthalpy,previous_humiditycontent,moisture,
     heatinput,barometricpressure):
         self.humiditycontent=float(humiditycontent)
