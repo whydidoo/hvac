@@ -10,7 +10,7 @@ delRowButton.disabled=true;
 $(document).ready(function() {
 
   
-
+    //отправка отзыва
   $('#send_feedback').on('click', function() {
     $.ajax({
       url: '/loadingdiagram/idfeedback/',
@@ -30,7 +30,7 @@ $(document).ready(function() {
     return false;
   });
  
-    
+    //расчет Id-диагр
   $('#calculate').on('click', function() {
     $.ajax({
       url: '/loadingdiagram/calculate/',
@@ -912,24 +912,32 @@ function creat_input_for_process(){
     lastInputElementTempr.className='form-control';
     lastInputElementTempr.type='text';
     lastInputElementTempr.placeholder='Температура';
+    lastInputElementTempr.setAttribute("onChange","changeOnDot.call(this)");
+    lastInputElementTempr.setAttribute("onkeyup","keyupOnDot.call(this)");
     var lastinputElementEnthalpy=document.createElement('input');
     lastinputElementEnthalpy.id='lastenthalpy_0'+i
     lastinputElementEnthalpy.name='lastenthalpy_0'+i
     lastinputElementEnthalpy.className='form-control';
     lastinputElementEnthalpy.type='text';
     lastinputElementEnthalpy.placeholder='Энтальпия';
+    lastinputElementEnthalpy.setAttribute("onChange","changeOnDot.call(this)");
+    lastinputElementEnthalpy.setAttribute("onkeyup","keyupOnDot.call(this)");
     var lastinputElementHumidit=document.createElement('input');
     lastinputElementHumidit.id='lasthumiditycontent_0'+i
     lastinputElementHumidit.name='lasthumiditycontent_0'+i
     lastinputElementHumidit.className='form-control';
     lastinputElementHumidit.type='text';
     lastinputElementHumidit.placeholder='Влагосодержание';
+    lastinputElementHumidit.setAttribute("onChange","changeOnDot.call(this)");
+    lastinputElementHumidit.setAttribute("onkeyup","keyupOnDot.call(this)");
     var lastinputElementRelat=document.createElement('input');
     lastinputElementRelat.id='lastrelativities_0'+i
     lastinputElementRelat.name='lastrelativities_0'+i
     lastinputElementRelat.className='form-control';
     lastinputElementRelat.type='text';
     lastinputElementRelat.placeholder='Отн. влажность';
+    lastinputElementRelat.setAttribute("onChange","changeOnDot.call(this)");
+    lastinputElementRelat.setAttribute("onkeyup","keyupOnDot.call(this)");
     if(valueSelect==0){
         $(tdProcessesInput).empty()
         $(tdtimeNowProcess).empty();
@@ -976,11 +984,15 @@ function creat_input_for_process(){
         moisture.name='moisture_0'+i;
         moisture.className='form-control';
         moisture.placeholder='Влагопоступение';
+        moisture.setAttribute("onChange","changeOnDot.call(this)");
+        moisture.setAttribute("onkeyup","keyupOnDot.call(this)");
         var heatinput=document.createElement('input');
         heatinput.id='heatinput_0'+i;
         heatinput.name='heatinput_0'+i;
         heatinput.className='form-control';
         heatinput.placeholder='Теплопоступение';
+        heatinput.setAttribute("onChange","changeOnDot.call(this)");
+        heatinput.setAttribute("onkeyup","keyupOnDot.call(this)");
         var selectTimeNowProccess=document.createElement('select');
         selectTimeNowProccess.className='form-control';
         selectTimeNowProccess.id='selecttimenowproccess_0'+i;
@@ -1007,11 +1019,15 @@ function creat_input_for_process(){
         moisture.name='moisture_0'+i;
         moisture.className='form-control';
         moisture.placeholder='Влагопоступение';
+        moisture.setAttribute("onChange","changeOnDot.call(this)");
+        moisture.setAttribute("onkeyup","keyupOnDot.call(this)");
         var heatinput=document.createElement('input');
         heatinput.id='heatinput_0'+i;
         heatinput.name='heatinput_0'+i;
         heatinput.className='form-control';
         heatinput.placeholder='Теплопоступение';
+        heatinput.setAttribute("onChange","changeOnDot.call(this)");
+        heatinput.setAttribute("onkeyup","keyupOnDot.call(this)");
         var selectTimeNowProccess=document.createElement('select');
         selectTimeNowProccess.className='form-control';
         selectTimeNowProccess.id='selecttimenowproccess_0'+i;
@@ -1038,11 +1054,15 @@ function creat_input_for_process(){
         moisture.name='moisture_0'+i;
         moisture.className='form-control';
         moisture.placeholder='Влагопоступение';
+        moisture.setAttribute("onChange","changeOnDot.call(this)");
+        moisture.setAttribute("onkeyup","keyupOnDot.call(this)");
         var heatinput=document.createElement('input');
         heatinput.id='heatinput_0'+i;
         heatinput.name='heatinput_0'+i;
         heatinput.className='form-control';
         heatinput.placeholder='Теплопоступение';
+        heatinput.setAttribute("onChange","changeOnDot.call(this)");
+        heatinput.setAttribute("onkeyup","keyupOnDot.call(this)");
         var selectTimeNowProccess=document.createElement('select');
         selectTimeNowProccess.className='form-control';
         selectTimeNowProccess.id='selecttimenowproccess_0'+i;
@@ -1069,11 +1089,15 @@ function creat_input_for_process(){
         capacity.name='capacity_0'+i;
         capacity.className='form-control';
         capacity.placeholder='Мощность';
+        capacity.setAttribute("onChange","changeOnDot.call(this)");
+        capacity.setAttribute("onkeyup","keyupOnDot.call(this)");
         var airMassFlow=document.createElement('input');
         airMassFlow.id='airmassflow_0'+i;
         airMassFlow.name='airmassflow_0'+i;
         airMassFlow.className='form-control';
         airMassFlow.placeholder='Масс.расход';
+        airMassFlow.setAttribute("onChange","changeOnDot.call(this)");
+        airMassFlow.setAttribute("onkeyup","keyupOnDot.call(this)");
         var selectTimeNowProccess=document.createElement('select');
         selectTimeNowProccess.className='form-control';
         selectTimeNowProccess.id='selecttimenowproccess_0'+i;
@@ -1142,24 +1166,28 @@ function creat_input_for_dot(){
     inputElementTempr.className='form-control';
     inputElementTempr.type='text';
     inputElementTempr.setAttribute("onChange","changeOnDot.call(this)");
+    inputElementTempr.setAttribute("onkeyup","keyupOnDot.call(this)");
     var inputElementEnthalpy=document.createElement('input');
     inputElementEnthalpy.id='enthalpy_0'+i
     inputElementEnthalpy.name='enthalpy_0'+i
     inputElementEnthalpy.className='form-control';
     inputElementEnthalpy.type='text';
     inputElementEnthalpy.setAttribute("onChange","changeOnDot.call(this)");
+    inputElementEnthalpy.setAttribute("onkeyup","keyupOnDot.call(this)");
     var inputElementHumidit=document.createElement('input');
     inputElementHumidit.id='humiditycontent_0'+i
     inputElementHumidit.name='humiditycontent_0'+i
     inputElementHumidit.className='form-control';
     inputElementHumidit.type='text';
     inputElementHumidit.setAttribute("onChange","changeOnDot.call(this)");
+    inputElementHumidit.setAttribute("onkeyup","keyupOnDot.call(this)");
     var inputElementRelat=document.createElement('input');
     inputElementRelat.id='relativities_0'+i
     inputElementRelat.name='relativities_0'+i
     inputElementRelat.className='form-control';
     inputElementRelat.type='text';
     inputElementRelat.setAttribute("onChange","changeOnDot.call(this)");
+    inputElementRelat.setAttribute("onkeyup","keyupOnDot.call(this)");
     if(valueSelect==0){
         $(tdTemperature).empty();
         $(tdEnthalpy).empty();
@@ -1398,7 +1426,19 @@ function delRow() {
 
 }
 //замена зяпятую на точку в tbody input
-
+function keyupOnDot(){
+    this.value=this.value.replace(/,/g, '.');
+    if (/^(\-)?\d*(\.\d*)?$/.test(this.value)) {
+        this.defaultValue = this.value;
+    }else {
+        this.value = "";
+    }
+}
 function changeOnDot(){
     this.value=this.value.replace(/,/g, '.');
+    if (/^(\-)?\d*(\.\d*)?$/.test(this.value)) {
+        this.defaultValue = this.value;
+    }else {
+        this.value = "";
+    }
 }
