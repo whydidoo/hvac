@@ -8,6 +8,7 @@ urlpatterns = [
 
     url(r'^loadingdiagram/processcalculation/$',views.process_calculation,name='processcalculation'),
     url(r'^loadingdiagram/calculate/$',views.calculate),
+    url(r'^loadingdiagram/idfeedback/$',views.send_feedback),
     url(r'^/$',views.process_calculation),
     
 ]

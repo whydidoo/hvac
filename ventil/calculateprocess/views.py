@@ -6,7 +6,10 @@ from django.shortcuts import render_to_response
 from calculation import ProcessCalculation
 from django.http import JsonResponse
 import json 
+import datetime
+from django.utils import timezone
 
+from . models import Feedback
 
 
 
@@ -225,3 +228,12 @@ def calculate(request):
 
 def process_calculation(request):
     return render(request, 'processcalculation.html')
+
+def send_feedback(request):
+    title  = request.POST['title_feedback']
+    content = request.POST['content_feedback']
+    date  = timezone.now()
+
+    feedback = Feedback(title=title, content=content,date=date)
+    feedback.save()
+    return JsonResponse({'status': 'успешно', 'message' : 'WP'})

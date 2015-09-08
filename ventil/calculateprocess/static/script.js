@@ -8,7 +8,28 @@ var delRowButton=document.getElementById('delrowbutton');
 delRowButton.disabled=true;
 //отправка данных для расчета
 $(document).ready(function() {
+
   
+
+  $('#send_feedback').on('click', function() {
+    $.ajax({
+      url: '/loadingdiagram/idfeedback/',
+      type: 'POST',
+      dataType: "json",
+      data: $('#feedbackcnontent').serialize(),
+      success: function(response) {
+        formFeedback=document.getElementById('feedbackcnontent');
+        alert('Отзыв оставлен');
+        formFeedback.reset();
+    },
+      error: function(errorThrown){
+        alert('Что-то пошло не так');
+        console.log(errorThrown);
+      }
+    });
+    return false;
+  });
+ 
     
   $('#calculate').on('click', function() {
     $.ajax({
