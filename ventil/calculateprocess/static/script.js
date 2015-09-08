@@ -1141,21 +1141,25 @@ function creat_input_for_dot(){
     inputElementTempr.name='temperature_0'+i
     inputElementTempr.className='form-control';
     inputElementTempr.type='text';
+    inputElementTempr.setAttribute("onChange","changeOnDot.call(this)");
     var inputElementEnthalpy=document.createElement('input');
     inputElementEnthalpy.id='enthalpy_0'+i
     inputElementEnthalpy.name='enthalpy_0'+i
     inputElementEnthalpy.className='form-control';
     inputElementEnthalpy.type='text';
+    inputElementEnthalpy.setAttribute("onChange","changeOnDot.call(this)");
     var inputElementHumidit=document.createElement('input');
     inputElementHumidit.id='humiditycontent_0'+i
     inputElementHumidit.name='humiditycontent_0'+i
     inputElementHumidit.className='form-control';
     inputElementHumidit.type='text';
+    inputElementHumidit.setAttribute("onChange","changeOnDot.call(this)");
     var inputElementRelat=document.createElement('input');
     inputElementRelat.id='relativities_0'+i
     inputElementRelat.name='relativities_0'+i
     inputElementRelat.className='form-control';
     inputElementRelat.type='text';
+    inputElementRelat.setAttribute("onChange","changeOnDot.call(this)");
     if(valueSelect==0){
         $(tdTemperature).empty();
         $(tdEnthalpy).empty();
@@ -1379,10 +1383,6 @@ function addRow(){
 
 }
 
-
-
-
-
 //удаляем строки
 function delRow() {
     document.getElementById('valueair').deleteRow(-1);
@@ -1397,4 +1397,8 @@ function delRow() {
     }
 
 }
+//замена зяпятую на точку в tbody input
 
+function changeOnDot(){
+    this.value=this.value.replace(/,/g, '.');
+}
