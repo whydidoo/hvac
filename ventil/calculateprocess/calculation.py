@@ -867,4 +867,55 @@ class ProcessCalculation:
             self.airmoisture=round(self.airmassflow*(self.humiditycontent-self.previous_humiditycontent)/1000,2)
             print(self.capacity,self.airmoisture)
 
-
+    def  find_valueair_with_process_mixing(self,airmassflow1,airmassflow2,enthalpy1,enthalpy2,humiditycontent1,humiditycontent2,
+        temperature1,temperature2,barometricpressure):
+        self.barometricpressure=float(barometricpressure) #Барометрическое давление
+        self.airmassflow1=float(airmassflow1)
+        self.airmassflow2=float(airmassflow2)
+        self.humiditycontent1=float(humiditycontent1)#Влагосодержание
+        self.enthalpy1=float(enthalpy1) #Энтальпия
+        self.temperature1=float(temperature1)
+        self.humiditycontent2=float(humiditycontent2)#Влагосодержание
+        self.enthalpy2=float(enthalpy2) #Энтальпия
+        self.temperature2=float(temperature2)
+        self.enthalpy=(self.enthalpy1*airmassflow1+self.enthalpy2*airmassflow2)/(airmassflow1+airmassflow2)
+        self.humiditycontent=(self.humiditycontent1*airmassflow1+self.humiditycontent2*airmassflow2)/(airmassflow1+airmassflow2)
+        self.temperature=round((self.enthalpy-2501*(self.humiditycontent/1000))/
+        (1.006+1.805*(self.humiditycontent/1000)), 5)#Температура
+        self.parcpressure=round(self.barometricpressure*self.humiditycontent/
+        (622+self.humiditycontent),5) #парциальное давление
+        if self.temperature<0:
+            self.saturationpressure=round(exp((18.74 * self.temperature - 115.72) / 
+            (233.77 + 0.997 * self.temperature)),5)#давление насыщения 
+        else:
+            self.saturationpressure=float(round(exp((16.57 * self.temperature - 115.72) /
+            (233.77 + 0.997 * self.temperature)),5)) 
+        self.relativities=round(self.parcpressure/self.saturationpressure*100,5)#Отностилеьная влажность
+        self.airdensity=round((3.483*self.barometricpressure/(self.temperature+273.15)-1.317*self.saturationpressure/(self.temperature+273.15)),3)
+        if self.temperature<0:
+            self.dewpoint=round((233.77*log(self.parcpressure)+115.72)/
+            (18.74-0.881*log(self.parcpressure)),2)
+        else:
+            self.dewpoint=round((233.77*log(self.parcpressure)+115.72)/
+            (16.57-0.997*log(self.parcpressure)),2)    #точка росы
+        #температура мокрого термометра
+        self.saturationenthalpy=self.enthalpy
+        self.saturationrelativities=100
+        self.saturationpressure=0
+        self.saturationhumiditycontent=0
+        self.saturationhumiditycontent_1=1
+        self.saturationtemperature=-60
+        while self.saturationhumiditycontent <= self.saturationhumiditycontent_1:
+            self.saturationtemperature=self.saturationtemperature
+            self.saturationhumiditycontent_1=float(round((self.saturationenthalpy-1.006*self.saturationtemperature)*
+            1000/(2501+1.805*self.saturationtemperature),5))
+            if self.saturationtemperature<0:
+                self.saturationpressure=round(exp((18.74 * self.saturationtemperature - 115.72) / 
+                (233.77 + 0.997 * self.saturationtemperature)),5)#давление насыщения 
+            else:
+                self.saturationpressure=float(round(exp((16.57 * self.saturationtemperature - 115.72) /
+                (233.77 + 0.997 * self.saturationtemperature)),5))
+            self.saturationhumiditycontent=float(round(622 * (self.saturationrelativities / 
+            100 * self.saturationpressure) / 
+            (self.barometricpressure - self.saturationrelativities / 100 * self.saturationpressure),5))
+            self.saturationtemperature=round(self.saturationtemperature+0.001,5)

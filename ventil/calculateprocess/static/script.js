@@ -955,6 +955,30 @@ $(document).ready(function() {
 
                 data.push(dotsValue);
 
+            }else if (myResults[key-1]['processes_0'+key]==13){
+                var numberconnect=document.getElementById('selecttimenowproccess_0'+key).value
+                var numberconnect2=document.getElementById('selecttimenowproccesstwo_0'+key).value
+                var dotsValue={
+                    legend:{show: true},
+                    data: [[myResults[numberconnect-1]['humiditycontent_0'+numberconnect],myResults[numberconnect-1]['temperature_0'+numberconnect]],[myResults[numberconnect2-1]['humiditycontent_0'+numberconnect2],myResults[numberconnect2-1]['temperature_0'+numberconnect2]]],
+                    color: '#010D27',
+                    points: { show: true },
+                    lines: { show: true },
+                
+            }
+            var dotsValue2={
+                    legend:{show: true},
+                    data: [[myResults[key-1]['humiditycontent_0'+key],myResults[key-1]['temperature_0'+key]],[myResults[key-1]['humiditycontent_0'+key],myResults[key-1]['temperature_0'+key]]],
+                    color: 'black',
+                    points: { show: true },
+                    lines: { show: true },
+                
+            }   
+
+                data.push(dotsValue);
+                data.push(dotsValue2);
+                console.log(numberconnect);
+
             }
             key++;
             
@@ -1423,15 +1447,13 @@ function creat_input_for_process(){
             airMassFlowTwo.setAttribute("onChange","changeOnDot.call(this)");
             airMassFlowTwo.setAttribute("onkeyup","keyupOnDot.call(this)");
             var selectTimeNowProccess=document.createElement('select');
-            selectTimeNowProccess.className='myselect';
+            selectTimeNowProccess.className='form-control';
             selectTimeNowProccess.id='selecttimenowproccess_0'+i;
             selectTimeNowProccess.name='selecttimenowproccess_0'+i;
-            selectTimeNowProccess.setAttribute("onChange","review()");
             var selectTimeNowProccessTwo=document.createElement('select');
-            selectTimeNowProccessTwo.className='myselect';
+            selectTimeNowProccessTwo.className='form-control';
             selectTimeNowProccessTwo.id='selecttimenowproccesstwo_0'+i;
             selectTimeNowProccessTwo.name='selecttimenowproccesstwo_0'+i;
-            selectTimeNowProccessTwo.setAttribute("onChange","review()");
             for (var k=0;k<i;k++) {
                 if (k>0){
                     var option=document.createElement('option')
@@ -1766,25 +1788,3 @@ function changeOnDot(){
         this.value = "";
     }
 }
-
-
-
-function review(){
-    var sel = $('.myselect'),
-    opt = $('option:not(:first-child)', sel);
-    var chosen = sel.map(function(i, el){
-        return $(':selected',el);
-        console.log(':selected',el);
-    });
-    var teamId = 0;
-    opt.show().prop('disabled', false);
-    chosen.each(function(i, el){
-        teamId = $(el).val();
-        opt.not(el).filter(function(){
-            return $(this).val() == teamId;
-        }).hide().prop('disabled', true);
-    });
-    return false;
-
-}
-

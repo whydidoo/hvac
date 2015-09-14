@@ -351,12 +351,13 @@ def calculate(request):
         elif (processes==13 and selectionofaction==1):
             airmassflow=float(request.POST['airmassflow_0'+str(i)])
             airmassflowtwo=float(request.POST['airmassflowtwo_0'+str(i)])
-            humiditycontent= float(request.POST['lasthumiditycontent_0'+str(i)])
             #Переменная j равна той строке в таблице с которой будет взаимодействовать процесс
             j=int(request.POST['selecttimenowproccess_0'+str(i)])
             dotval=int(request.POST['selecttimenowproccesstwo_0'+str(i)])
-            parameters.find_valueair_with_process_isothermicalmoisture_with_humiditycontent(humiditycontent,listvalue[j-1]['temperature_0'+str(j)],
-            barometricpressure,airmassflow,listvalue[j-1]['enthalpy_0'+str(j)],listvalue[j-1]['humiditycontent_0'+str(j)])
+            parameters.find_valueair_with_process_mixing(airmassflow,airmassflowtwo,listvalue[j-1]['enthalpy_0'+str(j)],
+            listvalue[dotval-1]['enthalpy_0'+str(dotval)],listvalue[j-1]['humiditycontent_0'+str(j)],
+            listvalue[dotval-1]['humiditycontent_0'+str(dotval)],listvalue[j-1]['temperature_0'+str(j)],listvalue[dotval-1]['temperature_0'+str(dotval)],
+            barometricpressure)
             some_data_to_dump = {
             'temperature_0'+str(i): round(parameters.temperature,2),
             'enthalpy_0'+str(i): round(parameters.enthalpy,2),
@@ -367,8 +368,13 @@ def calculate(request):
             'dewpoint_0'+str(i):round(parameters.dewpoint,2),
             'airdensity_0'+str(i):round(parameters.airdensity,2),
             'parcpressure_0'+str(i):round(parameters.parcpressure,2),
-            'capacity_0'+str(i):parameters.capacity,
-            'airmoisture_0'+str(i):parameters.airmoisture,
+            'temperature_01'+str(i):parameters.temperature1,
+            'temperature_02'+str(i):parameters.temperature2,
+            'enthalpy_01'+str(i):parameters.enthalpy1,
+            'enthalpy_02'+str(i):parameters.enthalpy2,
+            'humiditycontent_01'+str(i):parameters.humiditycontent1,
+            'humiditycontent_02'+str(i):parameters.humiditycontent2,
+            'dotval_0'+str(i):dotval,
             }
 
         listvalue.append(some_data_to_dump)
