@@ -42,10 +42,10 @@ $(document).ready(function() {
         console.log(response);
         var myResults = response;
         while(i<=document.getElementById('resultair').getElementsByTagName('tr').length){
-            
+            var select=document.getElementById('selectionofaction_0'+i).value;           
             var rowResult = document.getElementById('resultair').getElementsByTagName('tr')[i-1];
             var j = 1;
-            while(j<=4) {
+            while(j<=9) {
                 var td=rowResult.getElementsByTagName('td')[j];
                 if (j==1){
                     td.innerHTML="";
@@ -71,6 +71,112 @@ $(document).ready(function() {
                     p.align='center';
                     p.appendChild(document.createTextNode(myResults[i-1]['relativities_0'+i]));                   
                     td.appendChild(p);
+                }else if (j==5) {
+                    td.innerHTML="";
+                    var p =document.createElement('p');
+                    p.align='center';
+                    p.appendChild(document.createTextNode(myResults[i-1]['airdensity_0'+i]));                   
+                    td.appendChild(p);
+                }else if (j==6) {
+                    td.innerHTML="";
+                    var p =document.createElement('p');
+                    p.align='center';
+                    p.appendChild(document.createTextNode(myResults[i-1]['dewpoint_0'+i]));                   
+                    td.appendChild(p);
+                }else if (j==7) {
+                    td.innerHTML="";
+                    var p =document.createElement('p');
+                    p.align='center';
+                    p.appendChild(document.createTextNode(myResults[i-1]['saturationtemperature_0'+i]));                   
+                    td.appendChild(p);
+                }else if (j==8) {
+                    td.innerHTML="";
+                    var p =document.createElement('p');
+                    p.align='center';   
+                    p.appendChild(document.createTextNode(myResults[i-1]['parcpressure_0'+i]));                   
+                    td.appendChild(p);
+                }else if (select==1) {
+                    var selectaction=document.getElementById('processes_0'+i).value; 
+                    if(selectaction==5){
+                        td.innerHTML="";
+                        var p =document.createElement('p');
+                        p.align='center';
+                        p.appendChild(document.createTextNode('Gq'+'='+myResults[i-1]['airflowoncapacity_0'+i]+'(кг/ч)'));
+                        p.appendChild(document.createElement('br'));
+                        p.appendChild(document.createTextNode('Gw'+'='+myResults[i-1]['airflowondew_0'+i]+'(кг/ч)'));              
+                        td.appendChild(p);
+
+                    }else if(selectaction==6){
+                        td.innerHTML="";
+                        var p =document.createElement('p');
+                        p.align='center';
+                        p.appendChild(document.createTextNode('Gq'+'='+myResults[i-1]['airflowoncapacity_0'+i]+'(кг/ч)'));
+                        p.appendChild(document.createElement('br'));
+                        p.appendChild(document.createTextNode('Gw'+'='+myResults[i-1]['airflowondew_0'+i]+'(кг/ч)'));              
+                        td.appendChild(p);
+
+                    }else if(selectaction==7){
+                        td.innerHTML="";
+                        var p =document.createElement('p');
+                        p.align='center';
+                        p.appendChild(document.createTextNode('Gq'+'='+myResults[i-1]['airflowoncapacity_0'+i]+'(кг/ч)'));
+                        p.appendChild(document.createElement('br'));
+                        p.appendChild(document.createTextNode('Gw'+'='+myResults[i-1]['airflowondew_0'+i]+'(кг/ч)'));              
+                        td.appendChild(p);
+
+                    }else if(selectaction==9){
+                        td.innerHTML="";
+                        var p =document.createElement('p');
+                        p.align='center';
+                        p.appendChild(document.createTextNode('W'+'='+myResults[i-1]['airmoisture_0'+i]+'(кг/ч)'));              
+                        td.appendChild(p);
+
+                    }else if(selectaction==10){
+                        td.innerHTML="";
+                        var p =document.createElement('p');
+                        p.align='center';
+                        p.appendChild(document.createTextNode('W'+'='+myResults[i-1]['airmoisture_0'+i]+'(кг/ч)'));              
+                        td.appendChild(p);
+
+                    }else if(selectaction==3){
+                        td.innerHTML="";
+                        var p =document.createElement('p');
+                        p.align='center';
+                        p.appendChild(document.createTextNode('W'+'='+myResults[i-1]['airmoisture_0'+i]+'(кг/ч)'));              
+                        td.appendChild(p);
+
+                    }else if(selectaction==2){
+                        td.innerHTML="";
+                        var p =document.createElement('p');
+                        p.align='center';
+                        p.appendChild(document.createTextNode('N'+'='+myResults[i-1]['capacity_0'+i]+'(кВт)'));              
+                        td.appendChild(p);
+
+                    }else if(selectaction==11){
+                        td.innerHTML="";
+                        var p =document.createElement('p');
+                        p.align='center';
+                        p.appendChild(document.createTextNode('N'+'='+myResults[i-1]['capacity_0'+i]+'(кВт)'));
+                        p.appendChild(document.createElement('br'));
+                        p.appendChild(document.createTextNode('W'+'='+myResults[i-1]['airmoisture_0'+i]+'(кг/ч)'));               
+                        td.appendChild(p);
+
+                    }else if(selectaction==12){
+                        td.innerHTML="";
+                        var p =document.createElement('p');
+                        p.align='center';
+                        p.appendChild(document.createTextNode('N'+'='+myResults[i-1]['capacity_0'+i]+'(кВт)'));
+                        p.appendChild(document.createElement('br'));
+                        p.appendChild(document.createTextNode('W'+'='+myResults[i-1]['airmoisture_0'+i]+'(кг/ч)'));               
+                        td.appendChild(p);
+
+                    }else if(selectaction==0){
+                        td.innerHTML="";
+                    }else if(selectaction==8){
+                        td.innerHTML="";
+                    }
+                }else if(select==0){
+                        td.innerHTML="";
                 }
                     j++;
             }
@@ -177,7 +283,7 @@ $(document).ready(function() {
         var relativities_10={
             legend:{show: true},
             data: value,
-            color: "black",
+            color: "#666666",
             points: { show: false },
             lines: { show: true },
 
@@ -185,7 +291,7 @@ $(document).ready(function() {
         var relativities_20={
             legend:{show: true},
             data: value2,
-            color: "black",
+            color: "#666666",
             points: { show: false },
             lines: { show: true },
 
@@ -193,7 +299,7 @@ $(document).ready(function() {
         var relativities_30={
             legend:{show: true},
             data: value3,
-            color: "black",
+            color: "#666666",
             points: { show: false },
             lines: { show: true },
 
@@ -201,7 +307,7 @@ $(document).ready(function() {
         var relativities_40={
             legend:{show: true},
             data: value4,
-            color: "black",
+            color: "#666666",
             points: { show: false },
             lines: { show: true },
 
@@ -209,7 +315,7 @@ $(document).ready(function() {
         var relativities_50={
             legend:{show: true},
             data: value5,
-            color: "black",
+            color: "#666666",
             points: { show: false },
             lines: { show: true },
 
@@ -217,7 +323,7 @@ $(document).ready(function() {
         var relativities_60={
             legend:{show: true},
             data: value6,
-            color: "black",
+            color: "#666666",
             points: { show: false },
             lines: { show: true },
 
@@ -225,7 +331,7 @@ $(document).ready(function() {
         var relativities_70={
             legend:{show: true},
             data: value7,
-            color: "black",
+            color: "#666666",
             points: { show: false },
             lines: { show: true },
 
@@ -233,7 +339,7 @@ $(document).ready(function() {
         var relativities_80={
             legend:{show: true},
             data: value8,
-            color: "black",
+            color: "#666666",
             points: { show: false },
             lines: { show: true },
 
@@ -241,7 +347,7 @@ $(document).ready(function() {
         var relativities_90={
             legend:{show: true},
             data: value9,
-            color: "black",
+            color: "#666666",
             points: { show: false },
             lines: { show: true },
 
@@ -249,7 +355,7 @@ $(document).ready(function() {
         var relativities_100={
             legend:{show: true},
             data: value10,
-            color: "black",
+            color: "#666666",
             points: { show: false },
             lines: { show: true },
 
@@ -257,7 +363,7 @@ $(document).ready(function() {
         var enthalpyenthalpy1={
             legend:{show: true},
             data: [[0.935,-20],[0,-17.936]],
-            color: "black",
+            color: "#666666",
             points: { show: false },
             lines: { show: true },
 
@@ -265,7 +371,7 @@ $(document).ready(function() {
         var enthalpyenthalpy2={
             legend:{show: true},
             data: [[1.7452,-20],[0,-15.763]],
-            color: "black",
+            color: "#666666",
             points: { show: false },
             lines: { show: true },
 
@@ -273,7 +379,7 @@ $(document).ready(function() {
         var enthalpyenthalpy3={
             legend:{show: true},
             data: [[2.5569,-20],[0,-13.793]],
-            color: "black",
+            color: "#666666",
             points: { show: false },
             lines: { show: true },
 
@@ -281,7 +387,7 @@ $(document).ready(function() {
         var enthalpyenthalpy4={
             legend:{show: true},
             data: [[3.3687,-20],[0,-11.823]],
-            color: "black",
+            color: "#666666",
             points: { show: false },
             lines: { show: true },
 
@@ -289,7 +395,7 @@ $(document).ready(function() {
         var enthalpyenthalpy5={
             legend:{show: true},
             data: [[4.1804,-20],[0,-9.8522]],
-            color: "black",
+            color: "#666666",
             points: { show: false },
             lines: { show: true },
 
@@ -297,7 +403,7 @@ $(document).ready(function() {
         var enthalpyenthalpy6={
             legend:{show: true},
             data: [[2.9217,-15],[0,-7.8818]],
-            color: "black",
+            color: "#666666",
             points: { show: false },
             lines: { show: true },
 
@@ -305,7 +411,7 @@ $(document).ready(function() {
         var enthalpyenthalpy7={
             legend:{show: true},
             data: [[3.7304,-15],[0,-5.9113]],
-            color: "black",
+            color: "#666666",
             points: { show: false },
             lines: { show: true },
 
@@ -313,7 +419,7 @@ $(document).ready(function() {
         var enthalpyenthalpy8={
             legend:{show: true},
             data: [[4.5392,-15],[0,-3.9409]],
-            color: "black",
+            color: "#666666",
             points: { show: false },
             lines: { show: true },
 
@@ -321,7 +427,7 @@ $(document).ready(function() {
         var enthalpyenthalpy9={
             legend:{show: true},
             data: [[5.348,-15],[0,-1.9704]],
-            color: "black",
+            color: "#666666",
             points: { show: false },
             lines: { show: true },
 
@@ -329,7 +435,7 @@ $(document).ready(function() {
         var enthalpyenthalpy10={
             legend:{show: true},
             data: [[6.1567,-15],[0,0]],
-            color: "black",
+            color: "#666666",
             points: { show: false },
             lines: { show: true },
 
@@ -337,7 +443,7 @@ $(document).ready(function() {
         var enthalpyenthalpy11={
             legend:{show: true},
             data: [[4.8954,-10],[0,1.9704]],
-            color: "black",
+            color: "#666666",
             points: { show: false },
             lines: { show: true },
 
@@ -345,7 +451,7 @@ $(document).ready(function() {
         var enthalpyenthalpy12={
             legend:{show: true},
             data: [[5.7012,-10],[0,3.9409]],
-            color: "black",
+            color: "#666666",
             points: { show: false },
             lines: { show: true },
 
@@ -353,7 +459,7 @@ $(document).ready(function() {
         var enthalpyenthalpy13={
             legend:{show: true},
             data: [[6.507,-10],[0,5.9113]],
-            color: "black",
+            color: "#666666",
             points: { show: false },
             lines: { show: true },
 
@@ -361,7 +467,7 @@ $(document).ready(function() {
         var enthalpyenthalpy14={
             legend:{show: true},
             data: [[7.3129,-10],[0,7.8818]],
-            color: "black",
+            color: "#666666",
             points: { show: false },
             lines: { show: true },
 
@@ -369,7 +475,7 @@ $(document).ready(function() {
         var enthalpyenthalpy15={
             legend:{show: true},
             data: [[8.1187,-10],[0,9.8522]],
-            color: "black",
+            color: "#666666",
             points: { show: false },
             lines: { show: true },
 
@@ -377,7 +483,7 @@ $(document).ready(function() {
         var enthalpyenthalpy16={
             legend:{show: true},
             data: [[6.8548,-5],[0,11.823]],
-            color: "black",
+            color: "#666666",
             points: { show: false },
             lines: { show: true },
 
@@ -385,7 +491,7 @@ $(document).ready(function() {
         var enthalpyenthalpy17={
             legend:{show: true},
             data: [[7.6577,-5],[0,13.793]],
-            color: "black",
+            color: "#666666",
             points: { show: false },
             lines: { show: true },
 
@@ -393,7 +499,7 @@ $(document).ready(function() {
         var enthalpyenthalpy18={
             legend:{show: true},
             data: [[8.4606,-5],[0,15.764]],
-            color: "black",
+            color: "#666666",
             points: { show: false },
             lines: { show: true },
 
@@ -401,7 +507,7 @@ $(document).ready(function() {
         var enthalpyenthalpy19={
             legend:{show: true},
             data: [[9.2635,-5],[0,17.734]],
-            color: "black",
+            color: "#666666",
             points: { show: false },
             lines: { show: true },
 
@@ -409,7 +515,7 @@ $(document).ready(function() {
         var enthalpyenthalpy20={
             legend:{show: true},
             data: [[10.066,-5],[0,19.704]],
-            color: "black",
+            color: "#666666",
             points: { show: false },
             lines: { show: true },
 
@@ -417,7 +523,7 @@ $(document).ready(function() {
         var enthalpyenthalpy21={
             legend:{show: true},
             data: [[8.8,0],[0,21.675]],
-            color: "black",
+            color: "#666666",
             points: { show: false },
             lines: { show: true },
 
@@ -425,7 +531,7 @@ $(document).ready(function() {
         var enthalpyenthalpy22={
             legend:{show: true},
             data: [[9.6,0],[0,23.635]],
-            color: "black",
+            color: "#666666",
             points: { show: false },
             lines: { show: true },
 
@@ -433,7 +539,7 @@ $(document).ready(function() {
         var enthalpyenthalpy23={
             legend:{show: true},
             data: [[10.4,0],[0,25.616]],
-            color: "black",
+            color: "#666666",
             points: { show: false },
             lines: { show: true },
 
@@ -441,7 +547,7 @@ $(document).ready(function() {
         var enthalpyenthalpy24={
             legend:{show: true},
             data: [[11.2,0],[0,27.586]],
-            color: "black",
+            color: "#666666",
             points: { show: false },
             lines: { show: true },
 
@@ -449,7 +555,7 @@ $(document).ready(function() {
         var enthalpyenthalpy25={
             legend:{show: true},
             data: [[12,0],[0,29.557]],
-            color: "black",
+            color: "#666666",
             points: { show: false },
             lines: { show: true },
 
@@ -457,7 +563,7 @@ $(document).ready(function() {
         var enthalpyenthalpy26={
             legend:{show: true},
             data: [[10.731,5],[0,31.527]],
-            color: "black",
+            color: "#666666",
             points: { show: false },
             lines: { show: true },
 
@@ -465,7 +571,7 @@ $(document).ready(function() {
         var enthalpyenthalpy27={
             legend:{show: true},
             data: [[11.528,5],[0,33.498]],
-            color: "black",
+            color: "#666666",
             points: { show: false },
             lines: { show: true },
 
@@ -473,7 +579,7 @@ $(document).ready(function() {
         var enthalpyenthalpy28={
             legend:{show: true},
             data: [[12.325,5],[0,35.468]],
-            color: "black",
+            color: "#666666",
             points: { show: false },
             lines: { show: true },
 
@@ -481,7 +587,7 @@ $(document).ready(function() {
         var enthalpyenthalpy29={
             legend:{show: true},
             data: [[13.123,5],[0,37.438]],
-            color: "black",
+            color: "#666666",
             points: { show: false },
             lines: { show: true },
 
@@ -489,7 +595,7 @@ $(document).ready(function() {
         var enthalpyenthalpy30={
             legend:{show: true},
             data: [[13.92,5],[0,39.409]],
-            color: "black",
+            color: "#666666",
             points: { show: false },
             lines: { show: true },
 
@@ -497,7 +603,7 @@ $(document).ready(function() {
         var enthalpyenthalpy31={
             legend:{show: true},
             data: [[12.649,10],[0,41.379]],
-            color: "black",
+            color: "#666666",
             points: { show: false },
             lines: { show: true },
 
@@ -505,7 +611,7 @@ $(document).ready(function() {
         var enthalpyenthalpy32={
             legend:{show: true},
             data: [[13.443,10],[0,43.45]],
-            color: "black",
+            color: "#666666",
             points: { show: false },
             lines: { show: true },
 
@@ -513,7 +619,7 @@ $(document).ready(function() {
         var enthalpyenthalpy33={
             legend:{show: true},
             data: [[14.237,10],[0,45.32]],
-            color: "black",
+            color: "#666666",
             points: { show: false },
             lines: { show: true },
 
@@ -521,7 +627,7 @@ $(document).ready(function() {
         var enthalpyenthalpy34={
             legend:{show: true},
             data: [[15.031,10],[0,47.291]],
-            color: "black",
+            color: "#666666",
             points: { show: false },
             lines: { show: true },
 
@@ -529,7 +635,7 @@ $(document).ready(function() {
         var enthalpyenthalpy35={
             legend:{show: true},
             data: [[15.826,10],[0,49.261]],
-            color: "black",
+            color: "#666666",
             points: { show: false },
             lines: { show: true },
 
@@ -537,7 +643,7 @@ $(document).ready(function() {
         var enthalpyenthalpy36={
             legend:{show: true},
             data: [[14.552,15],[0,51.232]],
-            color: "black",
+            color: "#666666",
             points: { show: false },
             lines: { show: true },
 
@@ -545,7 +651,7 @@ $(document).ready(function() {
         var enthalpyenthalpy37={
             legend:{show: true},
             data: [[15.344,15],[0,53.202]],
-            color: "black",
+            color: "#666666",
             points: { show: false },
             lines: { show: true },
 
@@ -553,7 +659,7 @@ $(document).ready(function() {
         var enthalpyenthalpy38={
             legend:{show: true},
             data: [[16.135,15],[0,55.172]],
-            color: "black",
+            color: "#666666",
             points: { show: false },
             lines: { show: true },
 
@@ -561,7 +667,7 @@ $(document).ready(function() {
         var enthalpyenthalpy39={
             legend:{show: true},
             data: [[16.927,15],[0,57.143]],
-            color: "black",
+            color: "#666666",
             points: { show: false },
             lines: { show: true },
 
@@ -569,7 +675,7 @@ $(document).ready(function() {
         var enthalpyenthalpy40={
             legend:{show: true},
             data: [[17.718,15],[0,59.113]],
-            color: "black",
+            color: "#666666",
             points: { show: false },
             lines: { show: true },
 
@@ -577,7 +683,7 @@ $(document).ready(function() {
         var enthalpyenthalpy41={
             legend:{show: true},
             data: [[16.442,20],[4.3431,50]],
-            color: "black",
+            color: "#666666",
             points: { show: false },
             lines: { show: true },
 
@@ -585,7 +691,7 @@ $(document).ready(function() {
         var enthalpyenthalpy42={
             legend:{show: true},
             data: [[17.231,20],[5.1152,50]],
-            color: "black",
+            color: "#666666",
             points: { show: false },
             lines: { show: true },
 
@@ -593,7 +699,7 @@ $(document).ready(function() {
         var enthalpyenthalpy43={
             legend:{show: true},
             data: [[18.02,20],[5.8873,50]],
-            color: "black",
+            color: "#666666",
             points: { show: false },
             lines: { show: true },
 
@@ -601,7 +707,7 @@ $(document).ready(function() {
         var enthalpyenthalpy44={
             legend:{show: true},
             data: [[18.808,20],[6.6594,50]],
-            color: "black",
+            color: "#666666",
             points: { show: false },
             lines: { show: true },
 
@@ -609,7 +715,7 @@ $(document).ready(function() {
         var enthalpyenthalpy45={
             legend:{show: true},
             data: [[19.597,20],[7.4315,50]],
-            color: "black",
+            color: "#666666",
             points: { show: false },
             lines: { show: true },
 
@@ -617,7 +723,7 @@ $(document).ready(function() {
         var enthalpyenthalpy46={
             legend:{show: true},
             data: [[20.385,20],[8.2036,50]],
-            color: "black",
+            color: "#666666",
             points: { show: false },
             lines: { show: true },
 
@@ -625,7 +731,7 @@ $(document).ready(function() {
         var enthalpyenthalpy47={
             legend:{show: true},
             data: [[21.174,20],[8.9757,50]],
-            color: "black",
+            color: "#666666",
             points: { show: false },
             lines: { show: true },
 
@@ -633,7 +739,7 @@ $(document).ready(function() {
         var enthalpyenthalpy48={
             legend:{show: true},
             data: [[21.963,20],[9.7478,50]],
-            color: "black",
+            color: "#666666",
             points: { show: false },
             lines: { show: true },
 
@@ -641,7 +747,7 @@ $(document).ready(function() {
         var enthalpyenthalpy49={
             legend:{show: true},
             data: [[22.751,20],[10.52,50]],
-            color: "black",
+            color: "#666666",
             points: { show: false },
             lines: { show: true },
 
@@ -649,7 +755,7 @@ $(document).ready(function() {
         var enthalpyenthalpy50={
             legend:{show: true},
             data: [[23.54,20],[11.292,50]],
-            color: "black",
+            color: "#666666",
             points: { show: false },
             lines: { show: true },
 
@@ -657,7 +763,7 @@ $(document).ready(function() {
         var enthalpyenthalpy51={
             legend:{show: true},
             data: [[22.248,25],[12.064,50]],
-            color: "black",
+            color: "#666666",
             points: { show: false },
             lines: { show: true },
 
@@ -665,7 +771,7 @@ $(document).ready(function() {
         var enthalpyenthalpy52={
             legend:{show: true},
             data: [[23.034,25],[12.836,50]],
-            color: "black",
+            color: "#666666",
             points: { show: false },
             lines: { show: true },
 
@@ -673,7 +779,7 @@ $(document).ready(function() {
         var enthalpyenthalpy53={
             legend:{show: true},
             data: [[23.82,25],[13.608,50]],
-            color: "black",
+            color: "#666666",
             points: { show: false },
             lines: { show: true },
 
@@ -681,7 +787,7 @@ $(document).ready(function() {
         var enthalpyenthalpy54={
             legend:{show: true},
             data: [[24.605,25],[14.38,50]],
-            color: "black",
+            color: "#666666",
             points: { show: false },
             lines: { show: true },
 
@@ -693,7 +799,8 @@ $(document).ready(function() {
         enthalpyenthalpy21,enthalpyenthalpy22,enthalpyenthalpy23,enthalpyenthalpy24,enthalpyenthalpy25,enthalpyenthalpy26,enthalpyenthalpy27,enthalpyenthalpy28,
         enthalpyenthalpy29,enthalpyenthalpy30,enthalpyenthalpy31,enthalpyenthalpy32,enthalpyenthalpy33,enthalpyenthalpy34,enthalpyenthalpy35,enthalpyenthalpy36,
         enthalpyenthalpy37,enthalpyenthalpy38,enthalpyenthalpy39,enthalpyenthalpy40,enthalpyenthalpy41,enthalpyenthalpy42,enthalpyenthalpy43,enthalpyenthalpy44,
-        enthalpyenthalpy45,enthalpyenthalpy46,enthalpyenthalpy47,enthalpyenthalpy48,enthalpyenthalpy49,enthalpyenthalpy50,enthalpyenthalpy51,enthalpyenthalpy52,enthalpyenthalpy53,enthalpyenthalpy54];
+        enthalpyenthalpy45,enthalpyenthalpy46,enthalpyenthalpy47,enthalpyenthalpy48,enthalpyenthalpy49,enthalpyenthalpy50,enthalpyenthalpy51,enthalpyenthalpy52,enthalpyenthalpy53,
+        enthalpyenthalpy54];
 
         var key=1
         while(key<=document.getElementById('resultair').getElementsByTagName('tr').length){
@@ -807,8 +914,44 @@ $(document).ready(function() {
                     color: 'blue',
                     points: { show: true },
                     lines: { show: true },
+                }
+                data.push(dotsValue);
+            }else if (myResults[key-1]['processes_0'+key]==2){
+                var numberconnect=document.getElementById('selecttimenowproccess_0'+key).value
+                var dotsValue={
+                    legend:{show: true},
+                    data: [[myResults[numberconnect-1]['humiditycontent_0'+numberconnect],myResults[numberconnect-1]['temperature_0'+numberconnect]],[myResults[key-1]['humiditycontent_0'+key],myResults[key-1]['temperature_0'+key]]],
+                    color: '#010D27',
+                    points: { show: true },
+                    lines: { show: true },
                 
-            } 
+            }  
+
+                data.push(dotsValue);
+
+            }else if (myResults[key-1]['processes_0'+key]==11){
+                var numberconnect=document.getElementById('selecttimenowproccess_0'+key).value
+                var dotsValue={
+                    legend:{show: true},
+                    data: [[myResults[numberconnect-1]['humiditycontent_0'+numberconnect],myResults[numberconnect-1]['temperature_0'+numberconnect]],[myResults[key-1]['humiditycontent_0'+key],myResults[key-1]['temperature_0'+key]]],
+                    color: '#010D27',
+                    points: { show: true },
+                    lines: { show: true },
+                
+            }  
+
+                data.push(dotsValue);
+
+            }else if (myResults[key-1]['processes_0'+key]==12){
+                var numberconnect=document.getElementById('selecttimenowproccess_0'+key).value
+                var dotsValue={
+                    legend:{show: true},
+                    data: [[myResults[numberconnect-1]['humiditycontent_0'+numberconnect],myResults[numberconnect-1]['temperature_0'+numberconnect]],[myResults[key-1]['humiditycontent_0'+key],myResults[key-1]['temperature_0'+key]]],
+                    color: '#010D27',
+                    points: { show: true },
+                    lines: { show: true },
+                
+            }  
 
                 data.push(dotsValue);
 
@@ -837,11 +980,11 @@ $(document).ready(function() {
                 horizontalLines: true,
                 outlineWidth: 10,
                 mouseActiveRadius: 5,
-                tickColor: 'grey',
+                tickColor: '#89A49B',
                 clickable: true,
                 hoverable: true
             },
-            colors:'black'
+            colors:'#89A49B'
         };
 
 
@@ -965,6 +1108,13 @@ function creat_input_for_process(){
         selectTimeNowProccess.className='form-control';
         selectTimeNowProccess.id='selecttimenowproccess_0'+i;
         selectTimeNowProccess.name='selecttimenowproccess_0'+i;
+        var airMassFlow=document.createElement('input');
+        airMassFlow.id='airmassflow_0'+i;
+        airMassFlow.name='airmassflow_0'+i;
+        airMassFlow.className='form-control';
+        airMassFlow.placeholder='Масс.расход';
+        airMassFlow.setAttribute("onChange","changeOnDot.call(this)");
+        airMassFlow.setAttribute("onkeyup","keyupOnDot.call(this)");
         for (var k=0;k<i;k++) {
             if (k>0){
                 var option=document.createElement('option')
@@ -975,6 +1125,7 @@ function creat_input_for_process(){
         }
         tdtimeNowProcess.appendChild(selectTimeNowProccess);
         tdLastParametr.appendChild(lastInputElementTempr);
+        tdProcessesInput.appendChild(airMassFlow);
     }else if (valueSelect==5){
         $(tdProcessesInput).empty()
         $(tdtimeNowProcess).empty();
@@ -1088,14 +1239,14 @@ function creat_input_for_process(){
         capacity.id='capacity_0'+i;
         capacity.name='capacity_0'+i;
         capacity.className='form-control';
-        capacity.placeholder='Мощность';
+        capacity.placeholder='Мощность(кВт)';
         capacity.setAttribute("onChange","changeOnDot.call(this)");
         capacity.setAttribute("onkeyup","keyupOnDot.call(this)");
         var airMassFlow=document.createElement('input');
         airMassFlow.id='airmassflow_0'+i;
         airMassFlow.name='airmassflow_0'+i;
         airMassFlow.className='form-control';
-        airMassFlow.placeholder='Масс.расход';
+        airMassFlow.placeholder='Масс.расход(кг/ч)';
         airMassFlow.setAttribute("onChange","changeOnDot.call(this)");
         airMassFlow.setAttribute("onkeyup","keyupOnDot.call(this)");
         var selectTimeNowProccess=document.createElement('select');
@@ -1118,6 +1269,13 @@ function creat_input_for_process(){
         $(tdProcessesInput).empty()
         $(tdtimeNowProcess).empty();
         $(tdLastParametr).empty();
+        var airMassFlow=document.createElement('input');
+        airMassFlow.id='airmassflow_0'+i;
+        airMassFlow.name='airmassflow_0'+i;
+        airMassFlow.className='form-control';
+        airMassFlow.placeholder='Масс.расход';
+        airMassFlow.setAttribute("onChange","changeOnDot.call(this)");
+        airMassFlow.setAttribute("onkeyup","keyupOnDot.call(this)");
         var selectTimeNowProccess=document.createElement('select');
         selectTimeNowProccess.className='form-control';
         selectTimeNowProccess.id='selecttimenowproccess_0'+i;
@@ -1132,10 +1290,18 @@ function creat_input_for_process(){
         }
         tdtimeNowProcess.appendChild(selectTimeNowProccess);
         tdLastParametr.appendChild(lastinputElementHumidit);
+        tdProcessesInput.appendChild(airMassFlow);
     }else if(valueSelect==10){
         $(tdProcessesInput).empty()
         $(tdtimeNowProcess).empty();
         $(tdLastParametr).empty();
+        var airMassFlow=document.createElement('input');
+        airMassFlow.id='airmassflow_0'+i;
+        airMassFlow.name='airmassflow_0'+i;
+        airMassFlow.className='form-control';
+        airMassFlow.placeholder='Масс.расход';
+        airMassFlow.setAttribute("onChange","changeOnDot.call(this)");
+        airMassFlow.setAttribute("onkeyup","keyupOnDot.call(this)");
         var selectTimeNowProccess=document.createElement('select');
         selectTimeNowProccess.className='form-control';
         selectTimeNowProccess.id='selecttimenowproccess_0'+i;
@@ -1150,6 +1316,150 @@ function creat_input_for_process(){
         }
         tdtimeNowProcess.appendChild(selectTimeNowProccess);
         tdLastParametr.appendChild(lastinputElementRelat);
+        tdProcessesInput.appendChild(airMassFlow);
+    }else if(valueSelect==2){
+        $(tdProcessesInput).empty()
+        $(tdtimeNowProcess).empty();
+        $(tdLastParametr).empty();
+        var airMassFlow=document.createElement('input');
+        airMassFlow.id='airmassflow_0'+i;
+        airMassFlow.name='airmassflow_0'+i;
+        airMassFlow.className='form-control';
+        airMassFlow.placeholder='Масс.расход';
+        airMassFlow.setAttribute("onChange","changeOnDot.call(this)");
+        airMassFlow.setAttribute("onkeyup","keyupOnDot.call(this)");
+        var airMoisture=document.createElement('input');
+        airMoisture.id='airmoisture_0'+i;
+        airMoisture.name='airmoisture_0'+i;
+        airMoisture.className='form-control';
+        airMoisture.placeholder='Влагаприток(кг/ч)';
+        airMoisture.setAttribute("onChange","changeOnDot.call(this)");
+        airMoisture.setAttribute("onkeyup","keyupOnDot.call(this)");
+        var selectTimeNowProccess=document.createElement('select');
+        selectTimeNowProccess.className='form-control';
+        selectTimeNowProccess.id='selecttimenowproccess_0'+i;
+        selectTimeNowProccess.name='selecttimenowproccess_0'+i;
+        for (var k=0;k<i;k++) {
+            if (k>0){
+                var option=document.createElement('option')
+                option.value = k;
+                option.text  = 'Точка'+" "+k;
+                selectTimeNowProccess.appendChild(option);
+            }
+        }
+        tdtimeNowProcess.appendChild(selectTimeNowProccess);
+        tdProcessesInput.appendChild(airMassFlow);
+        tdProcessesInput.appendChild(document.createElement('br'));
+        tdProcessesInput.appendChild(airMoisture);
+    }else if(valueSelect==11){
+        $(tdProcessesInput).empty()
+        $(tdtimeNowProcess).empty();
+        $(tdLastParametr).empty();
+        var airMassFlow=document.createElement('input');
+        airMassFlow.id='airmassflow_0'+i;
+        airMassFlow.name='airmassflow_0'+i;
+        airMassFlow.className='form-control';
+        airMassFlow.placeholder='Масс.расход';
+        airMassFlow.setAttribute("onChange","changeOnDot.call(this)");
+        airMassFlow.setAttribute("onkeyup","keyupOnDot.call(this)");
+        var selectTimeNowProccess=document.createElement('select');
+        selectTimeNowProccess.className='form-control';
+        selectTimeNowProccess.id='selecttimenowproccess_0'+i;
+        selectTimeNowProccess.name='selecttimenowproccess_0'+i;
+        for (var k=0;k<i;k++) {
+            if (k>0){
+                var option=document.createElement('option')
+                option.value = k;
+                option.text  = 'Точка'+" "+k;
+                selectTimeNowProccess.appendChild(option);
+            }
+        }
+        tdtimeNowProcess.appendChild(selectTimeNowProccess);
+        tdProcessesInput.appendChild(airMassFlow);
+        tdLastParametr.appendChild(lastinputElementRelat);
+    }else if(valueSelect==12){
+        $(tdProcessesInput).empty()
+        $(tdtimeNowProcess).empty();
+        $(tdLastParametr).empty();
+        var airMassFlow=document.createElement('input');
+        airMassFlow.id='airmassflow_0'+i;
+        airMassFlow.name='airmassflow_0'+i;
+        airMassFlow.className='form-control';
+        airMassFlow.placeholder='Масс.расход';
+        airMassFlow.setAttribute("onChange","changeOnDot.call(this)");
+        airMassFlow.setAttribute("onkeyup","keyupOnDot.call(this)");
+        var selectTimeNowProccess=document.createElement('select');
+        selectTimeNowProccess.className='form-control';
+        selectTimeNowProccess.id='selecttimenowproccess_0'+i;
+        selectTimeNowProccess.name='selecttimenowproccess_0'+i;
+        for (var k=0;k<i;k++) {
+            if (k>0){
+                var option=document.createElement('option')
+                option.value = k;
+                option.text  = 'Точка'+" "+k;
+                selectTimeNowProccess.appendChild(option);
+            }
+        }
+        tdtimeNowProcess.appendChild(selectTimeNowProccess);
+        tdProcessesInput.appendChild(airMassFlow);
+        tdLastParametr.appendChild(lastinputElementHumidit);
+    }else if(valueSelect==13){
+        if (i>2){
+            $(tdProcessesInput).empty()
+            $(tdtimeNowProcess).empty();
+            $(tdLastParametr).empty();
+            var airMassFlow=document.createElement('input');
+            airMassFlow.id='airmassflow_0'+i;
+            airMassFlow.name='airmassflow_0'+i;
+            airMassFlow.className='form-control';
+            airMassFlow.placeholder='Масс.расход для 1 точки';
+            airMassFlow.setAttribute("onChange","changeOnDot.call(this)");
+            airMassFlow.setAttribute("onkeyup","keyupOnDot.call(this)");
+            var airMassFlowTwo=document.createElement('input');
+            airMassFlowTwo.id='airmassflowtwo_0'+i;
+            airMassFlowTwo.name='airmassflowtwo_0'+i;
+            airMassFlowTwo.className='form-control';
+            airMassFlowTwo.placeholder='Масс.расход для 2 точки';
+            airMassFlowTwo.setAttribute("onChange","changeOnDot.call(this)");
+            airMassFlowTwo.setAttribute("onkeyup","keyupOnDot.call(this)");
+            var selectTimeNowProccess=document.createElement('select');
+            selectTimeNowProccess.className='myselect';
+            selectTimeNowProccess.id='selecttimenowproccess_0'+i;
+            selectTimeNowProccess.name='selecttimenowproccess_0'+i;
+            selectTimeNowProccess.setAttribute("onChange","review()");
+            var selectTimeNowProccessTwo=document.createElement('select');
+            selectTimeNowProccessTwo.className='myselect';
+            selectTimeNowProccessTwo.id='selecttimenowproccesstwo_0'+i;
+            selectTimeNowProccessTwo.name='selecttimenowproccesstwo_0'+i;
+            selectTimeNowProccessTwo.setAttribute("onChange","review()");
+            for (var k=0;k<i;k++) {
+                if (k>0){
+                    var option=document.createElement('option')
+                    option.value = k;
+                    option.text  = 'Точка'+" "+k;
+                    selectTimeNowProccess.appendChild(option);
+                }
+            }
+            for (var k=0;k<i;k++) {
+                if (k>0){
+                    var option=document.createElement('option')
+                    option.value = k;
+                    option.text  = 'Точка'+" "+k;
+                    selectTimeNowProccessTwo.appendChild(option);
+                }
+            }
+            tdtimeNowProcess.appendChild(selectTimeNowProccess);
+            tdtimeNowProcess.appendChild(document.createElement('p'));
+            tdtimeNowProcess.appendChild(selectTimeNowProccessTwo);
+            tdProcessesInput.appendChild(airMassFlow);
+            tdProcessesInput.appendChild(document.createElement('br'));
+            tdProcessesInput.appendChild(airMassFlowTwo)
+        }else {
+            $(tdProcessesInput).empty()
+            $(tdtimeNowProcess).empty();
+            $(tdLastParametr).empty();
+            alert("Для этого процесса необходимо 3 точки")
+        }
     }
 }
 //Создаю Input для ввода параметров для построения точек по двум значениям
@@ -1292,49 +1602,63 @@ function type_of_action () {
         tdAction.appendChild(dotAction);
         dotAction.setAttribute("onClick","creat_input_for_dot.call(this)");
     }else{
-        $(tdTemperature).empty();
-        $(tdEnthalpy).empty();
-        $(tdHumidit).empty();
-        $(tdRelat).empty();
-        $(tdProcessesInput).empty()
-        $(tdtimeNowProcess).empty();
-        $(tdLastParametr).empty();
-        while (tdAction.getElementsByTagName('select').length){
-            tdAction.getElementsByTagName('select')[0].remove();
+        if (i>1){
+            $(tdTemperature).empty();
+            $(tdEnthalpy).empty();
+            $(tdHumidit).empty();
+            $(tdRelat).empty();
+            $(tdProcessesInput).empty()
+            $(tdtimeNowProcess).empty();
+            $(tdLastParametr).empty();
+            while (tdAction.getElementsByTagName('select').length){
+                tdAction.getElementsByTagName('select')[0].remove();
+            }
+            var processes=[
+            'Нагрев и охлаждение по температуре',
+            'Охлаждение',
+            'Изотермическое увлажнение по влаге',
+            'Ад.охлаждение по температуре',
+            'Осушение',
+            'Уг. коэф по температуре',
+            'Уг. коэф по влагосодержанию',
+            'Уг. коэф по энтальпии',
+            'Нагрев по мощности',
+            'Ад.охлаждение по влагосодержанию',
+            'Ад.охлаждение по отн.влажности',
+            'Изотермическое увлажнение по отн. влажности',
+            'Изотермическое увлажнение по влагосодержанию',
+            'Смешение']; 
+
+            var processes_select       = document.createElement("select");
+            processes_select.className = 'form-control';
+            processes_select.name      = 'processes_0'+i;
+            processes_select.id        = 'processes_0'+i;
+
+
+
+
+
+            for(var index in processes) {
+                var option = document.createElement('option');
+                option.value = index;
+                option.text  = processes[index];
+                processes_select.appendChild(option);
+            }
+
+            tdAction.appendChild(processes_select);
+            processes_select.setAttribute("onClick","creat_input_for_process.call(this)");
+        }else{
+            $(tdTemperature).empty();
+            $(tdEnthalpy).empty();
+            $(tdHumidit).empty();
+            $(tdRelat).empty();
+            $(tdProcessesInput).empty()
+            $(tdtimeNowProcess).empty();
+            $(tdLastParametr).empty();
+            alert("для процессов необходимо как минимум 2 точки");
         }
-        var processes=[
-        'Нагрев и охлаждение по температуре',
-        'Охлаждение',
-        'Увлажнение',
-        'Ад.охлаждение по температуре',
-        'Осушение',
-        'Уг. коэф по температуре',
-        'Уг. коэф по влагосодержанию',
-        'Уг. коэф по энтальпии',
-        'Нагрев по мощности',
-        'Ад.охлаждение по влагосодержанию',
-        'Ад.охлаждение по отн.влажности']; 
-
-        var processes_select       = document.createElement("select");
-        processes_select.className = 'form-control';
-        processes_select.name      = 'processes_0'+i;
-        processes_select.id        = 'processes_0'+i;
-    
-
-
-
-
-        for(var index in processes) {
-            var option = document.createElement('option');
-            option.value = index;
-            option.text  = processes[index];
-            processes_select.appendChild(option);
-        }
-
-        tdAction.appendChild(processes_select);
-        processes_select.setAttribute("onClick","creat_input_for_process.call(this)");
     }
-    console.log(i);
+
 }
 
 
@@ -1391,7 +1715,7 @@ function addRow(){
     rowResult.appendChild(tdResult);
     //add parameters td
     var k=0;
-    while (k<5){
+    while (k<9){
         var td1Result = document.createElement("td");
         rowResult.appendChild(td1Result);
         k++;
@@ -1442,3 +1766,25 @@ function changeOnDot(){
         this.value = "";
     }
 }
+
+
+
+function review(){
+    var sel = $('.myselect'),
+    opt = $('option:not(:first-child)', sel);
+    var chosen = sel.map(function(i, el){
+        return $(':selected',el);
+        console.log(':selected',el);
+    });
+    var teamId = 0;
+    opt.show().prop('disabled', false);
+    chosen.each(function(i, el){
+        teamId = $(el).val();
+        opt.not(el).filter(function(){
+            return $(this).val() == teamId;
+        }).hide().prop('disabled', true);
+    });
+    return false;
+
+}
+

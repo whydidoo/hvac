@@ -37,10 +37,10 @@
                             <th><p align="center">№</p></th>
                             <th><p align="center">Выбор действия</p></th>
                             <th><p align="center">Вид действия</p></th>
-                            <th><p align="center">Температура</p></th>
-                            <th><p align="center">Энтальпия</p></th>
-                            <th><p align="center">Влагосодержание</p></th>
-                            <th><p align="center">Отн. влажность</p></th>
+                            <th><p align="center">Температура(°C)</p></th>
+                            <th><p align="center">Энтальпия(кДж/кг)</p></th>
+                            <th><p align="center">Влагосодержание(гр/кг)</p></th>
+                            <th><p align="center">Отн. влажность(%)</p></th>
                             <th><p align="center" colspan="3">Дополнительные параметры для процесса</p></th>
                             <th><p align="center" colspan="3">Конечный параметр для построения процесса</p></th>
                             <th><p align="center">Начало расчета процесса.</p></th>
@@ -66,34 +66,38 @@
                 <thead >
                     <tr id="headtable">
                         <th><p align="center">№</p></th>
-                        <th><p align="center">Температура</p></th>
-                        <th><p align="center">Энтальпия</p></th>
-                        <th><p align="center">Влагосодержание</p></th>
-                        <th><p align="center">Отн. влажность</p></th>
-                        <th><p align="center">Процесс</p></th>
+                        <th><p align="center">Температура(°C)</p></th>
+                        <th><p align="center">Энтальпия(кДж/кг)</p></th>
+                        <th><p align="center">Влагосодержание(гр/кг)</p></th>
+                        <th><p align="center">Отн. влажность(%)</p></th>
+                        <th><p align="center">Плотность(кг/м³)</p></th>
+                        <th><p align="center">Темпр.точки росы(°C)</p></th>
+                        <th><p align="center">Темпр. мокрого термометра(°C)</p></th>
+                        <th><p align="center">Парц.давление(кПа)</p></th>
+                        <th><p align="center">Дополнительные параметры процесса</p></th>
 
                     </tr>
                 </thead> 
-                <tbody id="resultair">    
+                <tbody id="resultair">      
                 </tbody>
             </table>
 
         </div>       
-            <div class="col-md-4" id="feedback">
-                <h1>Оставить отзыв</h1>
-                 <form id="feedbackcnontent" type="POST">{% csrf_token %}
-                    <label for="title_feedback">Тема:</label>
-                    <input type="text" class="form-control" id="title_feedback"  name="title_feedback" ><br>
-                    <label for="content_feedback">Сообщение:</label>
-                    <textarea type="text" class="form-control" id="content_feedback"  name="content_feedback"></textarea><br>
-                    <button type="button" class="btn btn-primary" id="send_feedback">Отправить</button>
-                </form>
-            </div>              
+                      
     </div>
     <div class="col-md-8">
         <div id="flot-placeholder"></div>
     </div>
-
+<div class="col-md-4" id="feedback">
+    <h1>Оставить отзыв</h1>
+    <form id="feedbackcnontent" type="POST">{% csrf_token %}
+        <label for="title_feedback">Тема:</label>
+        <input type="text" class="form-control" id="title_feedback"  name="title_feedback" ><br>
+        <label for="content_feedback">Сообщение:</label>
+        <textarea type="text" class="form-control" id="content_feedback"  name="content_feedback"></textarea><br>
+        <button type="button" class="btn btn-primary" id="send_feedback">Отправить</button>
+    </form>
+</div>    
 <script  src="{% static "script.js" %}"></script>
 </div>
 

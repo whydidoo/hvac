@@ -25,7 +25,7 @@ def calculate(request):
         elif(selectionofaction==0):
             dotvalue=float(request.POST['dotvalue_0'+str(i)])
         #Реализация процессов
-        if (dotvalue==2):
+        if (dotvalue==2 and selectionofaction==0):
             temperature = request.POST['temperature_0'+str(i)]
             enthalpy = 0
             humiditycontent = 0
@@ -33,11 +33,15 @@ def calculate(request):
             parameters=ProcessCalculation(temperature,enthalpy,humiditycontent,relativities)
             parameters.find_valueair_with_temperature_and_relativities(parameters.temperature,parameters.relativities,barometricpressure)
             some_data_to_dump = {
-            'temperature_0'+str(i): parameters.temperature,
-            'enthalpy_0'+str(i): parameters.enthalpy,
-            'humiditycontent_0'+str(i): parameters.humiditycontent,
-            'relativities_0'+str(i): parameters.relativities,
+            'temperature_0'+str(i): round(parameters.temperature,2),
+            'enthalpy_0'+str(i): round(parameters.enthalpy,2),
+            'humiditycontent_0'+str(i): round(parameters.humiditycontent,2),
+            'relativities_0'+str(i): round(parameters.relativities,2),
             'selectionofaction_0'+str(i):selectionofaction,
+            'saturationtemperature_0'+str(i):round(parameters.saturationtemperature,2),
+            'dewpoint_0'+str(i):round(parameters.dewpoint,2),
+            'airdensity_0'+str(i):round(parameters.airdensity,2),
+            'parcpressure_0'+str(i):round(parameters.parcpressure,2),
             }
         elif (dotvalue==0 and selectionofaction==0):
             temperature = request.POST['temperature_0'+str(i)]
@@ -47,11 +51,15 @@ def calculate(request):
             parameters=ProcessCalculation(temperature,enthalpy,humiditycontent,relativities)
             parameters.find_valueair_with_temperature_and_enthalpy(parameters.temperature,parameters.enthalpy,barometricpressure)
             some_data_to_dump = {
-            'temperature_0'+str(i): parameters.temperature,
-            'enthalpy_0'+str(i): parameters.enthalpy,
-            'humiditycontent_0'+str(i): parameters.humiditycontent,
-            'relativities_0'+str(i): parameters.relativities,
+            'temperature_0'+str(i): round(parameters.temperature,2),
+            'enthalpy_0'+str(i): round(parameters.enthalpy,2),
+            'humiditycontent_0'+str(i): round(parameters.humiditycontent,2),
+            'relativities_0'+str(i): round(parameters.relativities,2),
             'selectionofaction_0'+str(i):selectionofaction,
+            'saturationtemperature_0'+str(i):round(parameters.saturationtemperature,2),
+            'dewpoint_0'+str(i):round(parameters.dewpoint,2),
+            'airdensity_0'+str(i):round(parameters.airdensity,2),
+            'parcpressure_0'+str(i):round(parameters.parcpressure,2),
             }
         elif (dotvalue==1 and selectionofaction==0):
             temperature = request.POST['temperature_0'+str(i)]
@@ -61,11 +69,15 @@ def calculate(request):
             parameters=ProcessCalculation(temperature,enthalpy,humiditycontent,relativities)
             parameters.find_valueair_with_temperature_and_humiditycontent(parameters.temperature,parameters.humiditycontent,barometricpressure)
             some_data_to_dump = {
-            'temperature_0'+str(i): parameters.temperature,
-            'enthalpy_0'+str(i): parameters.enthalpy,
-            'humiditycontent_0'+str(i): parameters.humiditycontent,
-            'relativities_0'+str(i): parameters.relativities,
+            'temperature_0'+str(i): round(parameters.temperature,2),
+            'enthalpy_0'+str(i): round(parameters.enthalpy,2),
+            'humiditycontent_0'+str(i): round(parameters.humiditycontent,2),
+            'relativities_0'+str(i): round(parameters.relativities,2),
             'selectionofaction_0'+str(i):selectionofaction,
+            'saturationtemperature_0'+str(i):round(parameters.saturationtemperature,2),
+            'dewpoint_0'+str(i):round(parameters.dewpoint,2),
+            'airdensity_0'+str(i):round(parameters.airdensity,2),
+            'parcpressure_0'+str(i):round(parameters.parcpressure,2),
             }
         elif (dotvalue==3 and selectionofaction==0):
             temperature = 0
@@ -75,11 +87,15 @@ def calculate(request):
             parameters=ProcessCalculation(temperature,enthalpy,humiditycontent,relativities)
             parameters.find_valueair_with_humiditycontent_and_enthalpy(parameters.humiditycontent,parameters.enthalpy,barometricpressure)
             some_data_to_dump = {
-            'temperature_0'+str(i): parameters.temperature,
-            'enthalpy_0'+str(i): parameters.enthalpy,
-            'humiditycontent_0'+str(i): parameters.humiditycontent,
-            'relativities_0'+str(i): parameters.relativities,
+            'temperature_0'+str(i): round(parameters.temperature,2),
+            'enthalpy_0'+str(i): round(parameters.enthalpy,2),
+            'humiditycontent_0'+str(i): round(parameters.humiditycontent,2),
+            'relativities_0'+str(i): round(parameters.relativities,2),
             'selectionofaction_0'+str(i):selectionofaction,
+            'saturationtemperature_0'+str(i):round(parameters.saturationtemperature,2),
+            'dewpoint_0'+str(i):round(parameters.dewpoint,2),
+            'airdensity_0'+str(i):round(parameters.airdensity,2),
+            'parcpressure_0'+str(i):round(parameters.parcpressure,2),
             }
         elif (dotvalue==4 and selectionofaction==0):
             temperature = 0
@@ -89,11 +105,15 @@ def calculate(request):
             parameters=ProcessCalculation(temperature,enthalpy,humiditycontent,relativities)
             parameters.find_valueair_with_humiditycontent_and_relativities(parameters.humiditycontent,parameters.relativities,barometricpressure)
             some_data_to_dump = {
-            'temperature_0'+str(i): parameters.temperature,
-            'enthalpy_0'+str(i): parameters.enthalpy,
-            'humiditycontent_0'+str(i): parameters.humiditycontent,
-            'relativities_0'+str(i): parameters.relativities,
+            'temperature_0'+str(i): round(parameters.temperature,2),
+            'enthalpy_0'+str(i): round(parameters.enthalpy,2),
+            'humiditycontent_0'+str(i): round(parameters.humiditycontent,2),
+            'relativities_0'+str(i): round(parameters.relativities,2),
             'selectionofaction_0'+str(i):selectionofaction,
+            'saturationtemperature_0'+str(i):round(parameters.saturationtemperature,2),
+            'dewpoint_0'+str(i):round(parameters.dewpoint,2),
+            'airdensity_0'+str(i):round(parameters.airdensity,2),
+            'parcpressure_0'+str(i):round(parameters.parcpressure,2),
             }
         elif (dotvalue==5 and selectionofaction==0):
             temperature = 0
@@ -103,11 +123,15 @@ def calculate(request):
             parameters=ProcessCalculation(temperature,enthalpy,humiditycontent,relativities)
             parameters.find_valueair_with_enthalpy_and_relativities(parameters.enthalpy,parameters.relativities,barometricpressure)
             some_data_to_dump = {
-            'temperature_0'+str(i): parameters.temperature,
-            'enthalpy_0'+str(i): parameters.enthalpy,
-            'humiditycontent_0'+str(i): parameters.humiditycontent,
-            'relativities_0'+str(i): parameters.relativities,
+            'temperature_0'+str(i): round(parameters.temperature,2),
+            'enthalpy_0'+str(i): round(parameters.enthalpy,2),
+            'humiditycontent_0'+str(i): round(parameters.humiditycontent,2),
+            'relativities_0'+str(i): round(parameters.relativities,2),
             'selectionofaction_0'+str(i):selectionofaction,
+            'saturationtemperature_0'+str(i):round(parameters.saturationtemperature,2),
+            'dewpoint_0'+str(i):round(parameters.dewpoint,2),
+            'airdensity_0'+str(i):round(parameters.airdensity,2),
+            'parcpressure_0'+str(i):round(parameters.parcpressure,2),
             }
         elif (processes==0 and selectionofaction==1):
             #Переменная j отвечает за элемент взятый из listvalue
@@ -115,11 +139,15 @@ def calculate(request):
             j=int(request.POST['selecttimenowproccess_0'+str(i)])
             parameters.find_valueair_with_process_hot(temperature,listvalue[j-1]['humiditycontent_0'+str(j)],barometricpressure)
             some_data_to_dump = {
-            'temperature_0'+str(i): parameters.temperature,
-            'enthalpy_0'+str(i): parameters.enthalpy,
-            'humiditycontent_0'+str(i): parameters.humiditycontent,
-            'relativities_0'+str(i): parameters.relativities,
+            'temperature_0'+str(i): round(parameters.temperature,2),
+            'enthalpy_0'+str(i): round(parameters.enthalpy,2),
+            'humiditycontent_0'+str(i): round(parameters.humiditycontent,2),
+            'relativities_0'+str(i): round(parameters.relativities,2),
             'processes_0'+str(i):selectionofaction,
+            'saturationtemperature_0'+str(i):parameters.saturationtemperature,
+            'dewpoint_0'+str(i):round(parameters.dewpoint,2),
+            'airdensity_0'+str(i):round(parameters.airdensity,2),
+            'parcpressure_0'+str(i):round(parameters.parcpressure,2),
             }
         elif (processes==5 and selectionofaction==1):
             #Переменная j отвечает за элемент взятый из listvalue
@@ -130,11 +158,17 @@ def calculate(request):
             parameters.find_valueair_with_process_rayprocess_with_temperature(parameters.temperature,listvalue[j-1]['enthalpy_0'+str(j)],
             listvalue[j-1]['humiditycontent_0'+str(j)],moisture,heatinput,barometricpressure)
             some_data_to_dump = {
-            'temperature_0'+str(i): parameters.temperature,
-            'enthalpy_0'+str(i): parameters.enthalpy,
-            'humiditycontent_0'+str(i): parameters.humiditycontent,
-            'relativities_0'+str(i): parameters.relativities,
+            'temperature_0'+str(i): round(parameters.temperature,2),
+            'enthalpy_0'+str(i): round(parameters.enthalpy,2),
+            'humiditycontent_0'+str(i): round(parameters.humiditycontent,2),
+            'relativities_0'+str(i): round(parameters.relativities,2),
             'processes_0'+str(i):processes,
+            'saturationtemperature_0'+str(i):round(parameters.saturationtemperature,2),
+            'dewpoint_0'+str(i):round(parameters.dewpoint,2),
+            'airdensity_0'+str(i):round(parameters.airdensity,2),
+            'parcpressure_0'+str(i):round(parameters.parcpressure,2),
+            'airflowondew_0'+str(i):round(parameters.airflowondew),
+            'airflowoncapacity_0'+str(i):round(parameters.airflowoncapacity),
             }
         elif (processes==6 and selectionofaction==1):
             #Переменная j отвечает за элемент взятый из listvalue
@@ -145,11 +179,17 @@ def calculate(request):
             parameters.find_valueair_with_process_rayprocess_with_humiditycontent(parameters.humiditycontent,listvalue[j-1]['enthalpy_0'+str(j)],
             listvalue[j-1]['humiditycontent_0'+str(j)],moisture,heatinput,barometricpressure)
             some_data_to_dump = {
-            'temperature_0'+str(i): parameters.temperature,
-            'enthalpy_0'+str(i): parameters.enthalpy,
-            'humiditycontent_0'+str(i): parameters.humiditycontent,
-            'relativities_0'+str(i): parameters.relativities,
+            'temperature_0'+str(i): round(parameters.temperature,2),
+            'enthalpy_0'+str(i): round(parameters.enthalpy,2),
+            'humiditycontent_0'+str(i): round(parameters.humiditycontent,2),
+            'relativities_0'+str(i): round(parameters.relativities,2),
             'processes_0'+str(i):processes,
+            'saturationtemperature_0'+str(i):round(parameters.saturationtemperature,2),
+            'dewpoint_0'+str(i):round(parameters.dewpoint,2),
+            'airdensity_0'+str(i):round(parameters.airdensity,2),
+            'parcpressure_0'+str(i):round(parameters.parcpressure,2),
+            'airflowondew_0'+str(i):round(parameters.airflowondew),
+            'airflowoncapacity_0'+str(i):round(parameters.airflowoncapacity)
             }
         elif (processes==7 and selectionofaction==1):
             parameters.enthalpy=request.POST['lastenthalpy_0'+str(i)]
@@ -160,11 +200,17 @@ def calculate(request):
             parameters.find_valueair_with_process_rayprocess_with_enthalpy(parameters.enthalpy,listvalue[j-1]['enthalpy_0'+str(j)],
             listvalue[j-1]['humiditycontent_0'+str(j)],moisture,heatinput,barometricpressure)
             some_data_to_dump = {
-            'temperature_0'+str(i): parameters.temperature,
-            'enthalpy_0'+str(i): parameters.enthalpy,
-            'humiditycontent_0'+str(i): parameters.humiditycontent,
-            'relativities_0'+str(i): parameters.relativities,
+            'temperature_0'+str(i): round(parameters.temperature,2),
+            'enthalpy_0'+str(i): round(parameters.enthalpy,2),
+            'humiditycontent_0'+str(i): round(parameters.humiditycontent,2),
+            'relativities_0'+str(i): round(parameters.relativities,2),
             'processes_0'+str(i):processes,
+            'saturationtemperature_0'+str(i):round(parameters.saturationtemperature,2),
+            'dewpoint_0'+str(i):round(parameters.dewpoint,2),
+            'airdensity_0'+str(i):round(parameters.airdensity,2),
+            'parcpressure_0'+str(i):round(parameters.parcpressure,2),
+            'airflowondew_0'+str(i):round(parameters.airflowondew),
+            'airflowoncapacity_0'+str(i):round(parameters.airflowoncapacity)
             }
         elif (processes==8 and selectionofaction==1):
             #Переменная j отвечает за элемент взятый из listvalue
@@ -174,48 +220,155 @@ def calculate(request):
             parameters.find_valueair_with_process_hot_with_capacit(capacity,airmassflow,listvalue[j-1]['enthalpy_0'+str(j)],
             listvalue[j-1]['humiditycontent_0'+str(j)],barometricpressure)
             some_data_to_dump = {
-            'temperature_0'+str(i): parameters.temperature,
-            'enthalpy_0'+str(i): parameters.enthalpy,
-            'humiditycontent_0'+str(i): parameters.humiditycontent,
-            'relativities_0'+str(i): parameters.relativities,
+            'temperature_0'+str(i): round(parameters.temperature,2),
+            'enthalpy_0'+str(i): round(parameters.enthalpy,2),
+            'humiditycontent_0'+str(i): round(parameters.humiditycontent,2),
+            'relativities_0'+str(i): round(parameters.relativities,2),
             'processes_0'+str(i):processes,
+            'saturationtemperature_0'+str(i):round(parameters.saturationtemperature,2),
+            'dewpoint_0'+str(i):round(parameters.dewpoint,2),
+            'airdensity_0'+str(i):round(parameters.airdensity,2),
+            'parcpressure_0'+str(i):round(parameters.parcpressure,2),
             }
         #Адиабатное охлаждение
         elif (processes==3 and selectionofaction==1):
             temperature=request.POST['lasttemperature_0'+str(i)]
             #Переменная j равна той строке в таблице с которой будет взаимодействовать процесс
+            airmassflow=request.POST['airmassflow_0'+str(i)]
             j=int(request.POST['selecttimenowproccess_0'+str(i)])
-            parameters.find_valueair_with_process_adiabatic_cooling_with_temperature(temperature,listvalue[j-1]['enthalpy_0'+str(j)],barometricpressure)
+            parameters.find_valueair_with_process_adiabatic_cooling_with_temperature(temperature,listvalue[j-1]['enthalpy_0'+str(j)],barometricpressure,
+            airmassflow,listvalue[j-1]['humiditycontent_0'+str(j)])
             some_data_to_dump = {
-            'temperature_0'+str(i): parameters.temperature,
-            'enthalpy_0'+str(i): parameters.enthalpy,
-            'humiditycontent_0'+str(i): parameters.humiditycontent,
-            'relativities_0'+str(i): parameters.relativities,
+            'temperature_0'+str(i): round(parameters.temperature,2),
+            'enthalpy_0'+str(i): round(parameters.enthalpy,2),
+            'humiditycontent_0'+str(i): round(parameters.humiditycontent,2),
+            'relativities_0'+str(i): round(parameters.relativities,2),
             'processes_0'+str(i):processes,
+            'saturationtemperature_0'+str(i):round(parameters.saturationtemperature,2),
+            'dewpoint_0'+str(i):round(parameters.dewpoint,2),
+            'airdensity_0'+str(i):round(parameters.airdensity,2),
+            'parcpressure_0'+str(i):round(parameters.parcpressure,2),
+            'airmoisture_0'+str(i):parameters.airmoisture,
             }
         elif (processes==9 and selectionofaction==1):
+            airmassflow=request.POST['airmassflow_0'+str(i)]
             humiditycontent=request.POST['lasthumiditycontent_0'+str(i)]
             #Переменная j равна той строке в таблице с которой будет взаимодействовать процесс
             j=int(request.POST['selecttimenowproccess_0'+str(i)])
-            parameters.find_valueair_with_process_adiabatic_cooling_with_humiditycontent(humiditycontent,listvalue[j-1]['enthalpy_0'+str(j)],barometricpressure)
+            parameters.find_valueair_with_process_adiabatic_cooling_with_humiditycontent(humiditycontent,listvalue[j-1]['enthalpy_0'+str(j)],
+            barometricpressure,airmassflow,listvalue[j-1]['humiditycontent_0'+str(j)])
             some_data_to_dump = {
-            'temperature_0'+str(i): parameters.temperature,
-            'enthalpy_0'+str(i): parameters.enthalpy,
-            'humiditycontent_0'+str(i): parameters.humiditycontent,
-            'relativities_0'+str(i): parameters.relativities,
+            'temperature_0'+str(i): round(parameters.temperature,2),
+            'enthalpy_0'+str(i): round(parameters.enthalpy,2),
+            'humiditycontent_0'+str(i): round(parameters.humiditycontent,2),
+            'relativities_0'+str(i): round(parameters.relativities,2),
             'processes_0'+str(i):processes,
+            'saturationtemperature_0'+str(i):round(parameters.saturationtemperature,2),
+            'dewpoint_0'+str(i):round(parameters.dewpoint,2),
+            'airdensity_0'+str(i):round(parameters.airdensity,2),
+            'parcpressure_0'+str(i):round(parameters.parcpressure,2),
+            'airmoisture_0'+str(i):parameters.airmoisture,
             }
         elif (processes==10 and selectionofaction==1):
+            airmassflow=request.POST['airmassflow_0'+str(i)]
             relativities=request.POST['lastrelativities_0'+str(i)]
             #Переменная j равна той строке в таблице с которой будет взаимодействовать процесс
             j=int(request.POST['selecttimenowproccess_0'+str(i)])
-            parameters.find_valueair_with_process_adiabatic_cooling_with_relativities(relativities,listvalue[j-1]['enthalpy_0'+str(j)],barometricpressure)
+            parameters.find_valueair_with_process_adiabatic_cooling_with_relativities(relativities,listvalue[j-1]['enthalpy_0'+str(j)],
+            barometricpressure,airmassflow,listvalue[j-1]['humiditycontent_0'+str(j)])
             some_data_to_dump = {
-            'temperature_0'+str(i): parameters.temperature,
-            'enthalpy_0'+str(i): parameters.enthalpy,
-            'humiditycontent_0'+str(i): parameters.humiditycontent,
-            'relativities_0'+str(i): parameters.relativities,
+            'temperature_0'+str(i): round(parameters.temperature,2),
+            'enthalpy_0'+str(i): round(parameters.enthalpy,2),
+            'humiditycontent_0'+str(i): round(parameters.humiditycontent,2),
+            'relativities_0'+str(i): round(parameters.relativities,2),
             'processes_0'+str(i):processes,
+            'saturationtemperature_0'+str(i):round(parameters.saturationtemperature,2),
+            'dewpoint_0'+str(i):round(parameters.dewpoint,2),
+            'airdensity_0'+str(i):round(parameters.airdensity,2),
+            'parcpressure_0'+str(i):round(parameters.parcpressure,2),
+            'airmoisture_0'+str(i):parameters.airmoisture,
+            }
+        elif (processes==2 and selectionofaction==1):
+            airmassflow=request.POST['airmassflow_0'+str(i)]
+            airmoisture=request.POST['airmoisture_0'+str(i)]
+            #Переменная j равна той строке в таблице с которой будет взаимодействовать процесс
+            j=int(request.POST['selecttimenowproccess_0'+str(i)])
+            parameters.find_valueair_with_process_isothermicalmoisture_with_airmoisture(airmoisture,listvalue[j-1]['temperature_0'+str(j)],
+            barometricpressure,airmassflow,listvalue[j-1]['humiditycontent_0'+str(j)],listvalue[j-1]['enthalpy_0'+str(j)])
+            some_data_to_dump = {
+            'temperature_0'+str(i): round(parameters.temperature,2),
+            'enthalpy_0'+str(i): round(parameters.enthalpy,2),
+            'humiditycontent_0'+str(i): round(parameters.humiditycontent,2),
+            'relativities_0'+str(i): round(parameters.relativities,2),
+            'processes_0'+str(i):processes,
+            'saturationtemperature_0'+str(i):round(parameters.saturationtemperature,2),
+            'dewpoint_0'+str(i):round(parameters.dewpoint,2),
+            'airdensity_0'+str(i):round(parameters.airdensity,2),
+            'parcpressure_0'+str(i):round(parameters.parcpressure,2),
+            'capacity_0'+str(i):parameters.capacity,
+            }
+        elif (processes==11 and selectionofaction==1):
+            airmassflow=float(request.POST['airmassflow_0'+str(i)])
+            relativities = float(request.POST['lastrelativities_0'+str(i)])
+            #Переменная j равна той строке в таблице с которой будет взаимодействовать процесс
+            j=int(request.POST['selecttimenowproccess_0'+str(i)])
+            parameters.find_valueair_with_process_isothermicalmoisture_with_relativities(relativities,listvalue[j-1]['temperature_0'+str(j)],
+            barometricpressure,airmassflow,listvalue[j-1]['enthalpy_0'+str(j)],listvalue[j-1]['humiditycontent_0'+str(j)])
+            some_data_to_dump = {
+            'temperature_0'+str(i): round(parameters.temperature,2),
+            'enthalpy_0'+str(i): round(parameters.enthalpy,2),
+            'humiditycontent_0'+str(i): round(parameters.humiditycontent,2),
+            'relativities_0'+str(i): round(parameters.relativities,2),
+            'processes_0'+str(i):processes,
+            'saturationtemperature_0'+str(i):round(parameters.saturationtemperature,2),
+            'dewpoint_0'+str(i):round(parameters.dewpoint,2),
+            'airdensity_0'+str(i):round(parameters.airdensity,2),
+            'parcpressure_0'+str(i):round(parameters.parcpressure,2),
+            'capacity_0'+str(i):parameters.capacity,
+            'airmoisture_0'+str(i):parameters.airmoisture,
+            }
+        elif (processes==12 and selectionofaction==1):
+            airmassflow=float(request.POST['airmassflow_0'+str(i)])
+            humiditycontent= float(request.POST['lasthumiditycontent_0'+str(i)])
+            #Переменная j равна той строке в таблице с которой будет взаимодействовать процесс
+            j=int(request.POST['selecttimenowproccess_0'+str(i)])
+            parameters.find_valueair_with_process_isothermicalmoisture_with_humiditycontent(humiditycontent,listvalue[j-1]['temperature_0'+str(j)],
+            barometricpressure,airmassflow,listvalue[j-1]['enthalpy_0'+str(j)],listvalue[j-1]['humiditycontent_0'+str(j)])
+            some_data_to_dump = {
+            'temperature_0'+str(i): round(parameters.temperature,2),
+            'enthalpy_0'+str(i): round(parameters.enthalpy,2),
+            'humiditycontent_0'+str(i): round(parameters.humiditycontent,2),
+            'relativities_0'+str(i): round(parameters.relativities,2),
+            'processes_0'+str(i):processes,
+            'saturationtemperature_0'+str(i):round(parameters.saturationtemperature,2),
+            'dewpoint_0'+str(i):round(parameters.dewpoint,2),
+            'airdensity_0'+str(i):round(parameters.airdensity,2),
+            'parcpressure_0'+str(i):round(parameters.parcpressure,2),
+            'capacity_0'+str(i):parameters.capacity,
+            'airmoisture_0'+str(i):parameters.airmoisture,
+            }
+        #Смешение 
+        elif (processes==13 and selectionofaction==1):
+            airmassflow=float(request.POST['airmassflow_0'+str(i)])
+            airmassflowtwo=float(request.POST['airmassflowtwo_0'+str(i)])
+            humiditycontent= float(request.POST['lasthumiditycontent_0'+str(i)])
+            #Переменная j равна той строке в таблице с которой будет взаимодействовать процесс
+            j=int(request.POST['selecttimenowproccess_0'+str(i)])
+            dotval=int(request.POST['selecttimenowproccesstwo_0'+str(i)])
+            parameters.find_valueair_with_process_isothermicalmoisture_with_humiditycontent(humiditycontent,listvalue[j-1]['temperature_0'+str(j)],
+            barometricpressure,airmassflow,listvalue[j-1]['enthalpy_0'+str(j)],listvalue[j-1]['humiditycontent_0'+str(j)])
+            some_data_to_dump = {
+            'temperature_0'+str(i): round(parameters.temperature,2),
+            'enthalpy_0'+str(i): round(parameters.enthalpy,2),
+            'humiditycontent_0'+str(i): round(parameters.humiditycontent,2),
+            'relativities_0'+str(i): round(parameters.relativities,2),
+            'processes_0'+str(i):processes,
+            'saturationtemperature_0'+str(i):round(parameters.saturationtemperature,2),
+            'dewpoint_0'+str(i):round(parameters.dewpoint,2),
+            'airdensity_0'+str(i):round(parameters.airdensity,2),
+            'parcpressure_0'+str(i):round(parameters.parcpressure,2),
+            'capacity_0'+str(i):parameters.capacity,
+            'airmoisture_0'+str(i):parameters.airmoisture,
             }
 
         listvalue.append(some_data_to_dump)
