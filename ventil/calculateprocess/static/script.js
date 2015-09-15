@@ -6,11 +6,11 @@ var counter = document.getElementById('counter');
 var count=0;
 var delRowButton=document.getElementById('delrowbutton');
 delRowButton.disabled=true;
-//отправка данных для расчета
+
 $(document).ready(function() {
 
   
-    //отправка отзыва
+    
   $('#send_feedback').on('click', function() {
     $.ajax({
       url: '/loadingdiagram/idfeedback/',
@@ -30,7 +30,7 @@ $(document).ready(function() {
     return false;
   });
  
-    //расчет Id-диагр
+    
   $('#calculate').on('click', function() {
     $.ajax({
       url: '/loadingdiagram/calculate/',
@@ -182,7 +182,7 @@ $(document).ready(function() {
             }
             i++;
         }
-        //Строим график
+        
         var temperature=[-41,-40,-39,-38,-37,-36,-35,-34,-33,-32,-31,-30,-29,-28,-27,-26,-25,
         -24,-23,-22,-21,-20,-19,-18,-17,-16,-15,-14,-13,-12,-11,-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,0,
         1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,
@@ -1066,11 +1066,11 @@ $(document).ready(function() {
 }); 
 
 
-//Создаю Input для процессов
+
 function creat_input_for_process(){
     var i=this.parentNode.previousSibling.previousSibling.textContent;
     var valueSelect=this.options[this.selectedIndex].value;
-    var tdProcessesInput=this.parentNode.nextSibling.nextSibling.nextSibling.nextSibling.nextSibling;//доп параметры
+    var tdProcessesInput=this.parentNode.nextSibling.nextSibling.nextSibling.nextSibling.nextSibling;
     var tdLastParametr=this.parentNode.nextSibling.nextSibling.nextSibling.nextSibling.nextSibling.nextSibling;
     var tdtimeNowProcess=this.parentNode.nextSibling.nextSibling.nextSibling.nextSibling.nextSibling.nextSibling.nextSibling;
     var lastInputElementTempr=document.createElement('input');
@@ -1484,7 +1484,7 @@ function creat_input_for_process(){
         }
     }
 }
-//Создаю Input для ввода параметров для построения точек по двум значениям
+
 function creat_input_for_dot(){
     var i=this.parentNode.previousSibling.previousSibling.textContent;
     var valueSelect=this.options[this.selectedIndex].value;
@@ -1578,7 +1578,7 @@ function creat_input_for_dot(){
 
 }
 
-//Вид действия 
+
 function type_of_action () {
     var tdTemperature=this.parentNode.nextSibling.nextSibling;
     var tdEnthalpy=this.parentNode.nextSibling.nextSibling.nextSibling;
@@ -1588,7 +1588,7 @@ function type_of_action () {
     var tdAction=this.parentNode.nextSibling;
     var selectrow=this.parentNode.parentNode;
     var i=this.parentNode.previousSibling.textContent;
-    var tdProcessesInput=this.parentNode.nextSibling.nextSibling.nextSibling.nextSibling.nextSibling.nextSibling;//доп параметры
+    var tdProcessesInput=this.parentNode.nextSibling.nextSibling.nextSibling.nextSibling.nextSibling.nextSibling;
     var tdLastParametr=this.parentNode.nextSibling.nextSibling.nextSibling.nextSibling.nextSibling.nextSibling.nextSibling;
     var tdtimeNowProcess=this.parentNode.nextSibling.nextSibling.nextSibling.nextSibling.nextSibling.nextSibling.nextSibling.nextSibling;
     if(valueSelect==0){
@@ -1686,22 +1686,22 @@ function type_of_action () {
 
 
 
-//добавляем строки
+
 function addRow(){
 
 
 
-    //creat row
+    
     var row = document.createElement("TR");
 
-    //add index td
+    
     var td1 = document.createElement("TD");
     td1.appendChild(document.createTextNode(i));
     row.appendChild(td1);
     
     
 
-    //Выбор действия 
+     
     var SelectionOfAction=document.createElement('select')
     SelectionOfAction.name='selectionofaction_0'+i
     SelectionOfAction.id='selectionofaction_0'+i
@@ -1719,7 +1719,7 @@ function addRow(){
     SelectionOfAction_td.appendChild(SelectionOfAction);
     row.appendChild(SelectionOfAction_td);
 
-    //Создаем пустые TD
+    
     var s=0
     while (s<8){
         var td_void = document.createElement("td");
@@ -1727,15 +1727,15 @@ function addRow(){
         s++;
     }
 
-    //add result row
+    
     var rowResult=document.createElement("TR");
 
-    //add index tdresult
+    
     var tdResult=document.createElement("td");
     tdResult.appendChild(document.createTextNode(i));
     tdResult.height='51';
     rowResult.appendChild(tdResult);
-    //add parameters td
+    
     var k=0;
     while (k<9){
         var td1Result = document.createElement("td");
@@ -1748,30 +1748,30 @@ function addRow(){
     SelectionOfAction.setAttribute("onClick","type_of_action.call(this)");
     i++;
     count++;
-    //счетчик 
+    
     counter.setAttribute('value',count);
-    //активация удаление точки
+    
     if (count>0){
         delRowButton.disabled=false;
     }
 
 }
 
-//удаляем строки
+
 function delRow() {
     document.getElementById('valueair').deleteRow(-1);
     document.getElementById('resultair').deleteRow(-1);
     i--;
     count--;
-    //счетчик 
+    
     counter.setAttribute('value',count);
-    //дисейбл buuton delRow
+    
     if (count==0){
         delRowButton.disabled=true;
     }
 
 }
-//замена зяпятую на точку в tbody input
+
 function keyupOnDot(){
     this.value=this.value.replace(/,/g, '.');
     if (/^(\-)?\d*(\.\d*)?$/.test(this.value)) {
